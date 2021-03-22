@@ -9,7 +9,8 @@
             "type": "string"
         },
         "pack_format": {
-            "type": "integer"
+            "type": "integer",
+            "minimum": 0
         },
         "zipped": {
             "type": "boolean"
