@@ -11,7 +11,8 @@
             "type": "string"
         },
         "pack_format": {
-            "title": "Pack version. Defaults to most recent version",
+            "title": "Pack version",
+            "default": 6,
             "type": "integer",
             "minimum": 0
         },
