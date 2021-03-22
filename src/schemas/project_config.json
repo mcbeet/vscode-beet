@@ -1,6 +1,6 @@
 {
-    "$schema": "https://json-schema.org/draft/2020-12/schema",
     "$id": "https://github.com/OrangeUtan/vscode-beet/blob/main/src/schemas/project_config.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
     "title": "Beet project configuration",
     "type": "object",
     "properties": {
