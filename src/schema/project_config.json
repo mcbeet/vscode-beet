@@ -79,6 +79,9 @@
                 },
                 "render": {
                     "$ref": "./contrib/render.json"
+                },
+                "sandstone": {
+                    "$ref": "./contrib/sandstone.json"
                 }
             }
         }
