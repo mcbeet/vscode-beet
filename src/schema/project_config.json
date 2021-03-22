@@ -4,19 +4,22 @@
     "type": "object",
     "properties": {
         "name": {
-            "title": "Name of the project",
+            "title": "Project name",
             "type": "string"
         },
         "description": {
-            "title": "Description of the project. Will be included in pack.mcmeta",
+            "title": "Project description",
+            "description": "Will be included in pack.mcmeta",
             "type": "string"
         },
         "author": {
-            "title": "Author of the project. Will be included in pack.mcmeta",
+            "title": "Project author",
+            "description": "Will be included in pack.mcmeta",
             "type": "string"
         },
         "version": {
-            "title": "Current project version. Will be included in pack.mcmeta",
+            "title": "Project version",
+            "description": "Will be included in pack.mcmeta",
             "type": "string"
         },
 
@@ -32,7 +35,8 @@
             }
         },
         "output": {
-            "title": "Output directory. Generated files will be put here",
+            "title": "Output directory",
+            "directory": "Generated files will be put here",
             "type": "string"
         },
         "ignore": {
@@ -57,7 +61,7 @@
             }
         },
         "templates": {
-            "title": "List of directory containing render templates",
+            "title": "List of directories containing rendering templates",
             "type": "array",
             "items": {
                 "type": "string"

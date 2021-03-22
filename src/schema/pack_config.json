@@ -3,11 +3,13 @@
     "type": "object",
     "properties": {
         "name": {
-            "title": "Name of the pack. Overwrites project name",
+            "title": "Name of the pack",
+            "description": "Overwrites project name",
             "type": "string"
         },
         "description": {
-            "title": "Description of the pack. Overwrites project description",
+            "title": "Description of the pack",
+            "description": "Overwrites project description",
             "type": "string"
         },
         "pack_format": {
@@ -28,7 +30,7 @@
             }
         },
         "render": {
-            "title": "Process text files with templates",
+            "title": "Groups of files that will be processed with templates",
             "type": "object",
             "additionalProperties": {
                 "type": "array",
