@@ -60,7 +60,13 @@
             "$ref": "./pack_config.json"
         },
         "pipeline": {
-            "type": "array"
+            "type": "array",
+            "items": {
+                "anyOf": [
+                    {"type": "string"},
+                    {"$ref": "./project_config.json"}
+                ]
+            }
         },
         "meta": {
             "type": "object"
