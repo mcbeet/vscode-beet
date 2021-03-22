@@ -54,10 +54,10 @@
             }
         },
         "data_pack": {
-            "type": "object"
+            "$ref": "./pack_config.json"
         },
         "resource_pack": {
-            "type": "object"
+            "$ref": "./pack_config.json"
         },
         "pipeline": {
             "type": "array"
