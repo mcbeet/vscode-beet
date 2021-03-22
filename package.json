@@ -4,6 +4,7 @@
 	"description": "Support for beet projects",
 	"version": "0.0.1",
 	"author": "Oran9eUtan",
+	"homepage": "https://github.com/OrangeUtan/vscode-beet",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/OrangeUtan/vscode-beet"
@@ -11,6 +12,7 @@
 	"bugs": {
 		"url": "https://github.com/OrangeUtan/vscode-beet/issues"
 	},
+	"license": "MIT",
 	"engines": {
 		"vscode": "^1.54.0"
 	},
