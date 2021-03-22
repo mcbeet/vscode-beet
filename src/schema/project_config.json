@@ -69,11 +69,11 @@
         },
         "data_pack": {
             "title": "Datapack configuration",
-            "$ref": "./pack_config.json"
+            "$ref": "#/definitions/pack_config"
         },
         "resource_pack": {
             "title": "Resourcepack configuration",
-            "$ref": "./pack_config.json"
+            "$ref": "#/definitions/pack_config"
         },
         "pipeline": {
             "title": "The plugin pipeline",
@@ -81,7 +81,7 @@
             "items": {
                 "anyOf": [
                     {"type": "string"},
-                    {"$ref": "./project_config.json"}
+                    {"$ref": "#"}
                 ]
             }
         },
@@ -91,23 +91,144 @@
             "properties": {
                 "function_header": {
                     "title": "Plugin that adds a header to functions automatically",
-                    "$ref": "./contrib/function_header.json"
+                    "$ref": "#/definitions/contrib_function_header"
                 },
                 "lantern_load": {
                     "title": "Plugin that implements Lantern Load runtime dependencies",
-                    "$ref": "./contrib/lantern_load.json"
+                    "$ref": "#/definitions/contrib_lantern_load"
                 },
                 "render": {
                     "title": "Plugin that invokes the built-in template renderer",
-                    "$ref": "./contrib/render.json"
+                    "$ref": "#/definitions/contrib_render"
                 },
                 "sandstone": {
                     "title": "Plugin that builds a sandstone project",
-                    "$ref": "./contrib/sandstone.json"
+                    "$ref": "#/definitions/contrib_sandstone"
                 },
                 "babelbox": {
                     "title": "Plugin that loads translations from csv files",
-                    "$ref": "./contrib/babelbox.json"
+                    "$ref": "#/definitions/contrib_babelbox"
+                }
+            }
+        }
+    },
+    "definitions": {
+        "pack_config": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "title": "Name of the pack",
+                    "description": "Overwrites project name",
+                    "type": "string"
+                },
+                "description": {
+                    "title": "Description of the pack",
+                    "description": "Overwrites project description",
+                    "type": "string"
+                },
+                "pack_format": {
+                    "title": "Pack version",
+                    "default": 6,
+                    "type": "integer",
+                    "minimum": 0
+                },
+                "zipped": {
+                    "title": "Wether the pack should be zipped",
+                    "type": "boolean"
+                },
+                "load": {
+                    "title": "Load and merge existing packs",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "render": {
+                    "title": "Groups of files that will be processed with templates",
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "contrib_function_header": {
+            "type": "object",
+            "properties": {
+                "match": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "template": {
+                    "type": "string",
+                    "pattern": ".*\\.mcfunction"
+                }
+            }
+        },
+        "contrib_lantern_load": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "version": {
+                    "type": "string"
+                },
+                "dependencies": {
+                    "type": "object"
+                }
+            }
+        },
+        "contrib_render": {
+            "type": "object",
+            "properties": {
+                "resource_pack": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "data_pack": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "contrib_sandstone": {
+            "type": "object",
+            "properties": {
+                "path": {
+                    "type": "string"
+                }
+            }
+        },
+        "contrib_babelbox": {
+            "type": "object",
+            "properties": {
+                "load": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "filename_prefix": {
+                    "type": "boolean"
+                },
+                "dialect": {
+                    "type": "string"
                 }
             }
         }
