@@ -30,7 +30,7 @@
 		"jsonValidation": [
 			{
 				"fileMatch": "beet*.json",
-				"url": "https://github.com/OrangeUtan/vscode-beet/blob/main/src/schemas/project_config.json"
+				"url": "https://github.com/OrangeUtan/vscode-beet/blob/main/src/schemas/project_config.schema.json"
 			}
 		]
 	},

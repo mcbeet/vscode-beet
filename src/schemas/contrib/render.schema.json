@@ -1,5 +1,5 @@
 {
-    "$id": "https://github.com/OrangeUtan/vscode-beet/blob/main/src/schemas/contrib/render.json",
+    "$id": "https://github.com/OrangeUtan/vscode-beet/blob/main/src/schemas/contrib/render.schema.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "type": "object",
     "properties": {
