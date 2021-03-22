@@ -69,7 +69,12 @@
             }
         },
         "meta": {
-            "type": "object"
+            "type": "object",
+            "properties": {
+                "function_header": {
+                    "$ref": "./contrib/function_header.json"
+                }
+            }
         }
     }
 }
