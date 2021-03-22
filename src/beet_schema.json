@@ -1,0 +1,69 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "Beet project configuration",
+    "type": "object",
+    "properties": {
+        "name": {
+            "type": "string"
+        },
+        "description": {
+            "type": "string"
+        },
+        "author": {
+            "type": "string"
+        },
+        "version": {
+            "type": "string"
+        },
+
+        "directory": {
+            "type": "string"
+        },
+        "extend": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "output": {
+            "type": "string"
+        },
+        "ignore": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "whitelist": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+
+        "require": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "templates": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "data_pack": {
+            "type": "object"
+        },
+        "resource_pack": {
+            "type": "object"
+        },
+        "pipeline": {
+            "type": "array"
+        },
+        "meta": {
+            "type": "object"
+        }
+    }
+}

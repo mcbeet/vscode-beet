@@ -14,10 +14,10 @@
 	],
 	"main": "./out/extension.js",
 	"contributes": {
-		"commands": [
+		"jsonValidation": [
 			{
-				"command": "vscode-beet.helloWorld",
-				"title": "Hello World"
+				"fileMatch": "beet.json",
+				"url": "./src/beet_schema.json"
 			}
 		]
 	},
