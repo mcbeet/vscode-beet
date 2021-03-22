@@ -57,7 +57,7 @@
             }
         },
         "templates": {
-            "title": "List of directory containing Jinja templates",
+            "title": "List of directory containing render templates",
             "type": "array",
             "items": {
                 "type": "string"
@@ -86,18 +86,23 @@
             "type": "object",
             "properties": {
                 "function_header": {
+                    "title": "Plugin that adds a header to functions automatically",
                     "$ref": "./contrib/function_header.json"
                 },
                 "lantern_load": {
+                    "title": "Plugin that implements Lantern Load runtime dependencies",
                     "$ref": "./contrib/lantern_load.json"
                 },
                 "render": {
+                    "title": "Plugin that invokes the built-in template renderer",
                     "$ref": "./contrib/render.json"
                 },
                 "sandstone": {
+                    "title": "Plugin that builds a sandstone project",
                     "$ref": "./contrib/sandstone.json"
                 },
                 "babelbox": {
+                    "title": "Plugin that loads translations from csv files",
                     "$ref": "./contrib/babelbox.json"
                 }
             }

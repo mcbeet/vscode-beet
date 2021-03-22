@@ -27,7 +27,7 @@
             }
         },
         "render": {
-            "title": "Process text files with Jinja",
+            "title": "Process text files with templates",
             "type": "object",
             "additionalProperties": {
                 "type": "array",
