@@ -4,31 +4,39 @@
     "type": "object",
     "properties": {
         "name": {
+            "title": "Name of the project",
             "type": "string"
         },
         "description": {
+            "title": "Description of the project. Will be included in pack.mcmeta",
             "type": "string"
         },
         "author": {
+            "title": "Author of the project. Will be included in pack.mcmeta",
             "type": "string"
         },
         "version": {
+            "title": "Current project version. Will be included in pack.mcmeta",
             "type": "string"
         },
 
         "directory": {
+            "title": "Root directory of the project",
             "type": "string"
         },
         "extend": {
+            "title": "List of project configurations files to inherit from",
             "type": "array",
             "items": {
                 "type": "string"
             }
         },
         "output": {
+            "title": "Output directory. Generated files will be put here",
             "type": "string"
         },
         "ignore": {
+            "title": "List of paths whose modification should be ignored by the watch command",
             "type": "array",
             "items": {
                 "type": "string"
@@ -42,24 +50,29 @@
         },
 
         "require": {
+            "title": "List of plugins running before the bootstrap plugin",
             "type": "array",
             "items": {
                 "type": "string"
             }
         },
         "templates": {
+            "title": "List of directory containing Jinja templates",
             "type": "array",
             "items": {
                 "type": "string"
             }
         },
         "data_pack": {
+            "title": "Datapack configuration",
             "$ref": "./pack_config.json"
         },
         "resource_pack": {
+            "title": "Resourcepack configuration",
             "$ref": "./pack_config.json"
         },
         "pipeline": {
+            "title": "The plugin pipeline",
             "type": "array",
             "items": {
                 "anyOf": [
@@ -69,6 +82,7 @@
             }
         },
         "meta": {
+            "title": "Storage for during the build process. Also contains plugin configurations",
             "type": "object",
             "properties": {
                 "function_header": {

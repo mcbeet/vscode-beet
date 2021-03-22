@@ -3,25 +3,31 @@
     "type": "object",
     "properties": {
         "name": {
+            "title": "Name of the pack. Overwrites project name",
             "type": "string"
         },
         "description": {
+            "title": "Description of the pack. Overwrites project description",
             "type": "string"
         },
         "pack_format": {
+            "title": "Pack version. Defaults to most recent version",
             "type": "integer",
             "minimum": 0
         },
         "zipped": {
+            "title": "Wether the pack should be zipped",
             "type": "boolean"
         },
         "load": {
+            "title": "Load and merge existing packs",
             "type": "array",
             "items": {
                 "type": "string"
             }
         },
         "render": {
+            "title": "Process text files with Jinja",
             "type": "object",
             "additionalProperties": {
                 "type": "array",
