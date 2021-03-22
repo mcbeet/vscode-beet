@@ -73,6 +73,10 @@
             "properties": {
                 "function_header": {
                     "$ref": "./contrib/function_header.json"
+                },
+                "lantern_load": {
+                    "$ref": "./contrib/lantern_load.json"
+                },
                 }
             }
         }
