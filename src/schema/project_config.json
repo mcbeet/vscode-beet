@@ -82,6 +82,9 @@
                 },
                 "sandstone": {
                     "$ref": "./contrib/sandstone.json"
+                },
+                "babelbox": {
+                    "$ref": "./contrib/babelbox.json"
                 }
             }
         }
