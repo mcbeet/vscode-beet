@@ -77,6 +77,8 @@
                 "lantern_load": {
                     "$ref": "./contrib/lantern_load.json"
                 },
+                "render": {
+                    "$ref": "./contrib/render.json"
                 }
             }
         }
