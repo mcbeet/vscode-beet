@@ -1,5 +1,5 @@
 {
-    "$id": "https://github.com/OrangeUtan/vscode-beet/blob/main/src/schemas/contrib/function_header.schema.json",
+    "$id": "https://raw.githubusercontent.com/OrangeUtan/vscode-beet/main/src/schemas/contrib/function_header.schema.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "type": "object",
     "properties": {
