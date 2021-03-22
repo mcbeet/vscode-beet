@@ -1,6 +1,6 @@
 {
   	"name": "vscode-beet",
-	"displayName": "beet",
+	"displayName": "Beet",
 	"description": "Support for beet projects",
 	"version": "0.0.1",
 	"author": "Oran9eUtan",
@@ -14,6 +14,12 @@
 		"url": "https://github.com/OrangeUtan/vscode-beet/issues"
 	},
 	"license": "MIT",
+	"keywords": [
+		"Minecraft",
+		"Beet",
+		"Datapack",
+		"Resourcepack"
+	],
 	"engines": {
 		"vscode": "^1.54.0"
 	},
