@@ -5,4 +5,4 @@ An extension that adds support for [`beet`](https://github.com/mcbeet/beet) proj
 ![](images/demo.gif)
 
 ## Features
-- Autocomplete for beet configuration files (beet*.json)
+- Autocompletion for beet configuration files (beet*.json)
