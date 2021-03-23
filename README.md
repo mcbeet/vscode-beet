@@ -3,7 +3,7 @@
 # VSCode Beet
 An extension adding support for [`beet`](https://github.com/mcbeet/beet) projects.
 
-- [Feature](#Features)
+- [Features](#Features)
     - [Completion](#Completion)
 
 # Features
