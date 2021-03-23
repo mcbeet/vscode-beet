@@ -1,59 +1,59 @@
 {
   	"name": "vscode-beet",
-	"displayName": "Beet",
-	"description": "Support for beet projects",
-	"version": "0.0.7",
-	"icon": "images/icon.png",
-	"author": "Oran9eUtan",
-	"publisher": "Oran9eUtan",
-	"homepage": "https://github.com/OrangeUtan/vscode-beet",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/OrangeUtan/vscode-beet"
-	},
-	"bugs": {
-		"url": "https://github.com/OrangeUtan/vscode-beet/issues"
-	},
-	"license": "MIT",
-	"keywords": [
-		"Minecraft",
-		"Beet",
-		"Datapack",
-		"Resourcepack"
-	],
-	"engines": {
-		"vscode": "^1.54.0"
-	},
-	"categories": [
-		"Other"
-	],
-	"contributes": {
-		"jsonValidation": [
-			{
-				"fileMatch": "beet*.json",
-				"url": "https://raw.githubusercontent.com/OrangeUtan/vscode-beet/main/src/schemas/project_config.schema.json"
-			}
-		]
-	},
-	"scripts": {
-		"vscode:prepublish": "yarn run compile",
-		"compile": "tsc -p ./",
-		"watch": "tsc -watch -p ./",
-		"pretest": "yarn run compile && yarn run lint",
-		"lint": "eslint src --ext ts",
-		"test": "node ./out/test/runTest.js"
-	},
-	"devDependencies": {
-		"@types/vscode": "^1.54.0",
-		"@types/glob": "^7.1.3",
-		"@types/mocha": "^8.0.4",
-		"@types/node": "^12.11.7",
-		"eslint": "^7.19.0",
-		"@typescript-eslint/eslint-plugin": "^4.14.1",
-		"@typescript-eslint/parser": "^4.14.1",
-		"glob": "^7.1.6",
-		"mocha": "^8.2.1",
-		"typescript": "^4.1.3",
-		"vscode-test": "^1.5.0"
-	}
+  	"displayName": "Beet",
+  	"description": "Support for beet projects",
+  	"version": "0.0.7",
+  	"icon": "images/icon.png",
+  	"author": "Oran9eUtan",
+  	"publisher": "Oran9eUtan",
+  	"homepage": "https://github.com/OrangeUtan/vscode-beet",
+  	"repository": {
+  	  	"type": "git",
+  	  	"url": "https://github.com/OrangeUtan/vscode-beet"
+  	},
+  	"bugs": {
+  	  	"url": "https://github.com/OrangeUtan/vscode-beet/issues"
+  	},
+  	"license": "MIT",
+  	"keywords": [
+  	  	"Minecraft",
+  	  	"Beet",
+  	  	"Datapack",
+  	  	"Resourcepack"
+  	],
+  	"engines": {
+  	  	"vscode": "^1.54.0"
+  	},
+  	"categories": [
+  	  	"Other"
+  	],
+  	"contributes": {
+  	  	"jsonValidation": [
+  	  	  	{
+  	  	  	  	"fileMatch": "beet*.json",
+  	  	  	  	"url": "https://raw.githubusercontent.com/OrangeUtan/vscode-beet/main/src/schemas/project_config.schema.json"
+  	  	  	}
+  	  	]
+  	},
+  	"scripts": {
+  	  	"vscode:prepublish": "yarn run compile",
+  	  	"compile": "tsc -p ./",
+  	  	"watch": "tsc -watch -p ./",
+  	  	"pretest": "yarn run compile && yarn run lint",
+  	  	"lint": "eslint src --ext ts",
+  	  	"test": "node ./out/test/runTest.js"
+  	},
+  	"devDependencies": {
+  	  	"@types/glob": "^7.1.3",
+  	  	"@types/mocha": "^8.0.4",
+  	  	"@types/node": "^12.11.7",
+  	  	"@types/vscode": "^1.54.0",
+  	  	"@typescript-eslint/eslint-plugin": "^4.14.1",
+  	  	"@typescript-eslint/parser": "^4.14.1",
+  	  	"eslint": "^7.19.0",
+  	  	"glob": "^7.1.6",
+  	  	"mocha": "^8.2.1",
+  	  	"typescript": "^4.1.3",
+  	  	"vscode-test": "^1.5.0"
+  	}
 }
