@@ -46,6 +46,7 @@
     "release:dry": "semantic-release --dry-run"
   },
   "devDependencies": {
+    "@semantic-release/changelog": "^5.0.1",
     "@types/glob": "^7.1.3",
     "@types/mocha": "^8.0.4",
     "@types/node": "^12.11.7",

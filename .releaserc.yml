@@ -3,15 +3,28 @@ branches:
 
 verifyConditions:
     - "semantic-release-vsce"
+    - "@semantic-release/git"
     - "@semantic-release/github"
 
+generateNotes:
+  - "@semantic-release/release-notes-generator"
+
 prepare:
-    path: "semantic-release-vsce"
-    packageVsix: true
+    - path: "@semantic-release/changelog"
+      changelogFile: "CHANGELOG.md"
+      changelogTitle: "Changelog"
+    - path: "semantic-release-vsce"
+      packageVsix: true
 
 publish:
+    - path: "@semantic-release/git"
+      assets: ["CHANGELOG.md"]
     - "semantic-release-vsce"
-    - {
-        path: "@semantic-release/github",
-        assets: "*.vsix"
-    }
+    - path: "@semantic-release/github"
+      assets: "*.vsix"
+
+success:
+  - "@semantic-release/github"
+
+fail:
+  - "@semantic-release/github"
