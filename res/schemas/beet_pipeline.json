@@ -1,6 +1,6 @@
 {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "title": "Beet project configuration",
+    "title": "Beet project config",
     "type": "object",
     "properties": {
         "name": {
@@ -28,7 +28,7 @@
             "type": "string"
         },
         "extend": {
-            "title": "List of project configurations files to inherit from",
+            "title": "List of project config files to inherit from",
             "type": "array",
             "items": {
                 "type": "string"
@@ -68,11 +68,11 @@
             }
         },
         "data_pack": {
-            "title": "Datapack configuration",
+            "title": "Datapack config",
             "$ref": "#/definitions/pack_config"
         },
         "resource_pack": {
-            "title": "Resourcepack configuration",
+            "title": "Resourcepack config",
             "$ref": "#/definitions/pack_config"
         },
         "pipeline": {
@@ -86,7 +86,7 @@
             }
         },
         "meta": {
-            "title": "Storage for during the build process. Also contains plugin configurations",
+            "title": "Storage for during the build process. Also contains plugin config",
             "type": "object",
             "properties": {
                 "function_header": {
