@@ -3,6 +3,7 @@
 	"displayName": "Beet",
 	"description": "Support for beet projects",
 	"version": "0.0.6",
+	"icon": "images/icon.png",
 	"author": "Oran9eUtan",
 	"publisher": "Oran9eUtan",
 	"homepage": "https://github.com/OrangeUtan/vscode-beet",
