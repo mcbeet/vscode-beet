@@ -1,5 +1,4 @@
 {
-    "$id": "https://raw.githubusercontent.com/mcbeet/vscode-beet/main/src/schemas/project_config.schema.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "title": "Beet project configuration",
     "type": "object",
