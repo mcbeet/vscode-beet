@@ -8,7 +8,7 @@
   "icon": "images/icon.png",
   "repository": {
     "type": "git",
-    "url": "https://github.com/mcbeet/vscode-beet"
+    "url": "https://github.com/mcbeet/vscode-beet.git"
   },
   "homepage": "https://github.com/mcbeet/vscode-beet",
   "bugs": {
