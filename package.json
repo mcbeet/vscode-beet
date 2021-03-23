@@ -2,7 +2,7 @@
   "name": "vscode-beet",
   "displayName": "Beet",
   "description": "Support for beet projects",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "icon": "images/icon.png",
   "author": "Oran9eUtan",
   "publisher": "mcbeet",
