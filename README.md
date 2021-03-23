@@ -1,10 +1,12 @@
 ![](https://raw.githubusercontent.com/mcbeet/vscode-beet/main/images/banner.png)
 
 # VSCode Beet
-
 An extension adding support for [`beet`](https://github.com/mcbeet/beet) projects.
 
-![](https://raw.githubusercontent.com/mcbeet/vscode-beet/main/images/demo.gif)
+- [Feature](#Features)
+    - [Completion](#Completion)
 
-## Features
-- Autocompletion for beet configuration files (beet*.json)
+# Features
+## Completion
+The extension adds linting and completions for your `beet*.json` configuration files:
+![](https://raw.githubusercontent.com/mcbeet/vscode-beet/main/images/demo.gif)
