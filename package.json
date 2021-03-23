@@ -42,7 +42,8 @@
     "watch": "tsc -watch -p ./",
     "pretest": "yarn run compile && yarn run lint",
     "lint": "eslint src --ext ts",
-    "test": "node ./out/test/runTest.js"
+    "test": "node ./out/test/runTest.js",
+    "release:dry": "semantic-release --dry-run"
   },
   "devDependencies": {
     "@types/glob": "^7.1.3",
@@ -54,6 +55,8 @@
     "eslint": "^7.19.0",
     "glob": "^7.1.6",
     "mocha": "^8.2.1",
+    "semantic-release": "^17.4.2",
+    "semantic-release-vsce": "^3.3.0",
     "typescript": "^4.1.3",
     "vscode-test": "^1.5.0"
   },
