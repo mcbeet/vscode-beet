@@ -2,7 +2,7 @@
   	"name": "vscode-beet",
 	"displayName": "Beet",
 	"description": "Support for beet projects",
-	"version": "0.0.5",
+	"version": "0.0.6",
 	"author": "Oran9eUtan",
 	"publisher": "Oran9eUtan",
 	"homepage": "https://github.com/OrangeUtan/vscode-beet",
