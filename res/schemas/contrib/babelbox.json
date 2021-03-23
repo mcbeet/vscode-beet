@@ -12,7 +12,7 @@
             "type": "boolean"
         },
         "dialect": {
-            "type": "string"
+            "type": "string", "enum": ["excel", "excel-tab", "unix"]
         }
     }
 }
