@@ -22,5 +22,6 @@ jobs:
       - name: Create release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          VSCE_PAT: ${{ secrets.VS_MARKETPLACE_TOKEN }}
+          # NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: npx semantic-release
