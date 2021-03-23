@@ -32,7 +32,7 @@
     "jsonValidation": [
       {
         "fileMatch": "beet*.json",
-        "url": "./res/schemas/project_config.schema.json"
+        "url": "./res/schemas/beet_pipeline.json"
       }
     ]
   },

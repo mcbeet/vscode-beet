@@ -91,23 +91,23 @@
             "properties": {
                 "function_header": {
                     "title": "Plugin that adds a header to functions automatically",
-                    "$ref": "#/definitions/contrib_function_header"
+                    "$ref": "contrib/function_header.json"
                 },
                 "lantern_load": {
                     "title": "Plugin that implements Lantern Load runtime dependencies",
-                    "$ref": "#/definitions/contrib_lantern_load"
+                    "$ref": "contrib/lantern_load.json"
                 },
                 "render": {
                     "title": "Plugin that invokes the built-in template renderer",
-                    "$ref": "#/definitions/contrib_render"
+                    "$ref": "contrib/render.json"
                 },
                 "sandstone": {
                     "title": "Plugin that builds a sandstone project",
-                    "$ref": "#/definitions/contrib_sandstone"
+                    "$ref": "contrib/sandstone.json"
                 },
                 "babelbox": {
                     "title": "Plugin that loads translations from csv files",
-                    "$ref": "#/definitions/contrib_babelbox"
+                    "$ref": "contrib/babelbox.json"
                 }
             }
         }
@@ -152,83 +152,6 @@
                             "type": "string"
                         }
                     }
-                }
-            }
-        },
-        "contrib_function_header": {
-            "type": "object",
-            "properties": {
-                "match": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    }
-                },
-                "template": {
-                    "type": "string",
-                    "pattern": ".*\\.mcfunction"
-                }
-            }
-        },
-        "contrib_lantern_load": {
-            "type": "object",
-            "properties": {
-                "id": {
-                    "type": "string"
-                },
-                "version": {
-                    "type": "string"
-                },
-                "dependencies": {
-                    "type": "object"
-                }
-            }
-        },
-        "contrib_render": {
-            "type": "object",
-            "properties": {
-                "resource_pack": {
-                    "type": "object",
-                    "additionalProperties": {
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        }
-                    }
-                },
-                "data_pack": {
-                    "type": "object",
-                    "additionalProperties": {
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        }
-                    }
-                }
-            }
-        },
-        "contrib_sandstone": {
-            "type": "object",
-            "properties": {
-                "path": {
-                    "type": "string"
-                }
-            }
-        },
-        "contrib_babelbox": {
-            "type": "object",
-            "properties": {
-                "load": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    }
-                },
-                "filename_prefix": {
-                    "type": "boolean"
-                },
-                "dialect": {
-                    "type": "string"
                 }
             }
         }
