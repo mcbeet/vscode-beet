@@ -6,7 +6,7 @@
 Adds VS Code support for [`beet`](https://github.com/mcbeet/beet) projects.<br>
 [`beet`](https://github.com/mcbeet/beet) is a development kit for creating Minecraft resource- and datapacks. It serves as a platform for a cooperative tooling ecosystem and its flexible composition model allows for customizable and user-friendly workflows.
 
-- [Features](#Extension-Features)
+- [Features](#Features)
     - [Completion](#Completion)
 
 # Features
