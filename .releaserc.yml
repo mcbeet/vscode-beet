@@ -8,8 +8,6 @@ verifyConditions:
 prepare:
     path: "semantic-release-vsce"
     packageVsix: true
-    yarn: true
-
 
 publish:
     - "semantic-release-vsce"
