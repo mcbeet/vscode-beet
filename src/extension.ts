@@ -35,12 +35,16 @@ export function activate(ctx: vscode.ExtensionContext) {
 
 export function deactivate() {}
 
-function beetTask(task: string, args: string[] = []) {
-    return new vscode.Task(
-        {type: "beet", "task": task},
+function beetTask(taskName: string, args: string[] = []) {
+    let task = new vscode.Task(
+        {type: "beet", "task": taskName},
         vscode.TaskScope.Workspace,
-        task,
+        taskName,
         "beet",
-        new vscode.ProcessExecution("beet", [task].concat(args))
+        new vscode.ProcessExecution("${config:python.pythonPath}", ["-m", "beet", taskName].concat(args)),
     );
+
+    task.presentationOptions.clear = true;
+
+    return task;
 }
