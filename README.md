@@ -13,3 +13,6 @@ Adds VS Code support for [`beet`](https://github.com/mcbeet/beet) projects.<br>
 ## Completion
 Adds linting and completions for `beet*.json` config files:
 ![](https://raw.githubusercontent.com/mcbeet/vscode-beet/main/images/demo.gif)
+
+## Common Beet commands
+![](https://raw.githubusercontent.com/mcbeet/vscode-beet/main/images/demo_commands.gif)
