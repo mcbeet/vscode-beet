@@ -1,18 +1,21 @@
 {
-    "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "type": "object",
-    "properties": {
-        "load": {
-            "type": "array",
-            "items": {
-                "type": "string"
-            }
-        },
-        "filename_prefix": {
-            "type": "boolean"
-        },
-        "dialect": {
-            "type": "string", "enum": ["excel", "excel-tab", "unix"]
-        }
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "load": {
+      "title": "Load csv translations",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "filename_prefix": {
+      "title": "Whether translation keys should be prefixed by the filename",
+      "type": "boolean"
+    },
+    "dialect": {
+      "title": "Use a specific csv dialect instead of relying on sniffing",
+      "type": "string", "enum": ["excel", "excel-tab", "unix"]
     }
+  }
 }

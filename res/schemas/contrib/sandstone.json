@@ -1,9 +1,11 @@
 {
-    "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "type": "object",
-    "properties": {
-        "path": {
-            "type": "string"
-        }
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "path": {
+      "title": "Path to the sandstone project",
+      "description": "Defaults to the current project directory",
+      "type": "string"
     }
+  }
 }

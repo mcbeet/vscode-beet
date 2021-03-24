@@ -1,24 +1,20 @@
 {
-    "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "type": "object",
-    "properties": {
-        "resource_pack": {
-            "type": "object",
-            "additionalProperties": {
-                "type": "array",
-                "items": {
-                    "type": "string"
-                }
-            }
-        },
-        "data_pack": {
-            "type": "object",
-            "additionalProperties": {
-                "type": "array",
-                "items": {
-                    "type": "string"
-                }
-            }
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "resource_pack": { "$ref": "#/definitions/pack_contents" },
+    "data_pack": { "$ref": "#/definitions/pack_contents" }
+  },
+  "definitions": {
+    "pack_contents": {
+      "title": "Process pack contents with the template renderer",
+      "type": "object",
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "type": "string"
         }
+      }
     }
+  }
 }

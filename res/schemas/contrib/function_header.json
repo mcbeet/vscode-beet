@@ -1,16 +1,19 @@
 {
-    "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "type": "object",
-    "properties": {
-        "match": {
-            "type": "array",
-            "items": {
-                "type": "string"
-            }
-        },
-        "template": {
-            "type": "string",
-            "pattern": ".*\\.mcfunction"
-        }
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "match": {
+      "title": "Add the header to the selected functions",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "template": {
+      "title": "The name of the template",
+      "description": "Defaults to \"function_header.mcfunction\"",
+      "type": "string",
+      "pattern": ".*\\.mcfunction"
     }
+  }
 }
