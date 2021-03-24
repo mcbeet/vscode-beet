@@ -1,159 +1,154 @@
 {
-    "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "title": "Beet project config",
-    "type": "object",
-    "properties": {
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Beet project config",
+  "type": "object",
+  "properties": {
+    "name": {
+      "title": "Project name",
+      "type": "string"
+    },
+    "description": {
+      "title": "Project description",
+      "description": "Will be included in pack.mcmeta",
+      "type": "string"
+    },
+    "author": {
+      "title": "Project author",
+      "description": "Will be included in pack.mcmeta",
+      "type": "string"
+    },
+    "version": {
+      "title": "Project version",
+      "description": "Will be included in pack.mcmeta",
+      "type": "string"
+    },
+    "directory": {
+      "title": "Root directory of the project",
+      "type": "string"
+    },
+    "extend": {
+      "title": "Extend from other config files",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "output": {
+      "title": "Output directory",
+      "type": "string"
+    },
+    "ignore": {
+      "title": "Files that shouldn't trigger a rebuild in watch mode",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "whitelist": {
+      "title": "Restrict the plugins that can be required into the pipeline",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "require": {
+      "title": "Plugins affecting the environment",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "templates": {
+      "title": "Template directories",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "data_pack": {
+      "title": "Data pack configuration",
+      "$ref": "#/definitions/pack_config"
+    },
+    "resource_pack": {
+      "title": "Resource pack configuration",
+      "$ref": "#/definitions/pack_config"
+    },
+    "pipeline": {
+      "title": "The plugin pipeline",
+      "type": "array",
+      "items": {
+        "anyOf": [{ "type": "string" }, { "$ref": "#" }]
+      }
+    },
+    "meta": {
+      "title": "Context metadata and plugin configuration",
+      "type": "object",
+      "properties": {
+        "function_header": {
+          "title": "Plugin that adds a header to functions automatically",
+          "$ref": "contrib/function_header.json"
+        },
+        "lantern_load": {
+          "title": "Plugin that implements Lantern Load runtime dependencies",
+          "$ref": "contrib/lantern_load.json"
+        },
+        "render": {
+          "title": "Plugin that invokes the built-in template renderer",
+          "$ref": "contrib/render.json"
+        },
+        "sandstone": {
+          "title": "Plugin that builds a sandstone project",
+          "$ref": "contrib/sandstone.json"
+        },
+        "babelbox": {
+          "title": "Plugin that loads translations from csv files",
+          "$ref": "contrib/babelbox.json"
+        }
+      }
+    }
+  },
+  "definitions": {
+    "pack_config": {
+      "type": "object",
+      "properties": {
         "name": {
-            "title": "Project name",
-            "type": "string"
+          "title": "Name of the pack",
+          "description": "Overwrites project name",
+          "type": "string"
         },
         "description": {
-            "title": "Project description",
-            "description": "Will be included in pack.mcmeta",
+          "title": "Description of the pack",
+          "description": "Overwrites project description",
+          "type": "string"
+        },
+        "pack_format": {
+          "title": "Pack version",
+          "default": 6,
+          "type": "integer",
+          "minimum": 0
+        },
+        "zipped": {
+          "title": "Wether the pack should be zipped",
+          "type": "boolean"
+        },
+        "load": {
+          "title": "Load and merge existing packs",
+          "type": "array",
+          "items": {
             "type": "string"
+          }
         },
-        "author": {
-            "title": "Project author",
-            "description": "Will be included in pack.mcmeta",
-            "type": "string"
-        },
-        "version": {
-            "title": "Project version",
-            "description": "Will be included in pack.mcmeta",
-            "type": "string"
-        },
-
-        "directory": {
-            "title": "Root directory of the project",
-            "type": "string"
-        },
-        "extend": {
-            "title": "List of project config files to inherit from",
+        "render": {
+          "title": "Process pack contents with the template renderer",
+          "type": "object",
+          "additionalProperties": {
             "type": "array",
             "items": {
-                "type": "string"
+              "type": "string"
             }
-        },
-        "output": {
-            "title": "Output directory",
-            "directory": "Generated files will be put here",
-            "type": "string"
-        },
-        "ignore": {
-            "title": "List of paths whose modification should be ignored by the watch command",
-            "type": "array",
-            "items": {
-                "type": "string"
-            }
-        },
-        "whitelist": {
-            "type": "array",
-            "items": {
-                "type": "string"
-            }
-        },
-
-        "require": {
-            "title": "List of plugins running before the bootstrap plugin",
-            "type": "array",
-            "items": {
-                "type": "string"
-            }
-        },
-        "templates": {
-            "title": "List of directories containing rendering templates",
-            "type": "array",
-            "items": {
-                "type": "string"
-            }
-        },
-        "data_pack": {
-            "title": "Datapack config",
-            "$ref": "#/definitions/pack_config"
-        },
-        "resource_pack": {
-            "title": "Resourcepack config",
-            "$ref": "#/definitions/pack_config"
-        },
-        "pipeline": {
-            "title": "The plugin pipeline",
-            "type": "array",
-            "items": {
-                "anyOf": [
-                    {"type": "string"},
-                    {"$ref": "#"}
-                ]
-            }
-        },
-        "meta": {
-            "title": "Storage for during the build process. Also contains plugin config",
-            "type": "object",
-            "properties": {
-                "function_header": {
-                    "title": "Plugin that adds a header to functions automatically",
-                    "$ref": "contrib/function_header.json"
-                },
-                "lantern_load": {
-                    "title": "Plugin that implements Lantern Load runtime dependencies",
-                    "$ref": "contrib/lantern_load.json"
-                },
-                "render": {
-                    "title": "Plugin that invokes the built-in template renderer",
-                    "$ref": "contrib/render.json"
-                },
-                "sandstone": {
-                    "title": "Plugin that builds a sandstone project",
-                    "$ref": "contrib/sandstone.json"
-                },
-                "babelbox": {
-                    "title": "Plugin that loads translations from csv files",
-                    "$ref": "contrib/babelbox.json"
-                }
-            }
+          }
         }
-    },
-    "definitions": {
-        "pack_config": {
-            "type": "object",
-            "properties": {
-                "name": {
-                    "title": "Name of the pack",
-                    "description": "Overwrites project name",
-                    "type": "string"
-                },
-                "description": {
-                    "title": "Description of the pack",
-                    "description": "Overwrites project description",
-                    "type": "string"
-                },
-                "pack_format": {
-                    "title": "Pack version",
-                    "default": 6,
-                    "type": "integer",
-                    "minimum": 0
-                },
-                "zipped": {
-                    "title": "Wether the pack should be zipped",
-                    "type": "boolean"
-                },
-                "load": {
-                    "title": "Load and merge existing packs",
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    }
-                },
-                "render": {
-                    "title": "Groups of files that will be processed with templates",
-                    "type": "object",
-                    "additionalProperties": {
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        }
-                    }
-                }
-            }
-        }
+      }
     }
+  }
 }
