@@ -103,6 +103,10 @@
         "babelbox": {
           "title": "Plugin that loads translations from csv files",
           "$ref": "contrib/babelbox.json"
+        },
+        "lectern": {
+          "title": "Plugin that loads markdown and text files",
+          "$ref": "lectern.json"
         }
       }
     }

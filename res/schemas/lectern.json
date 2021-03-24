@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "load": {
+      "title": "Load markdown and text files",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "snapshot": {
+      "title": "Output a snapshot at the end of the build",
+      "type": "string"
+    },
+    "external_files": {
+      "title": "Where to output the external files for the snapshot",
+      "type": "string"
+    }
+  }
+}
