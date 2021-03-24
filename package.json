@@ -17,7 +17,13 @@
   "license": "MIT",
   "main": "./out/extension.js",
   "activationEvents": [
-    "workspaceContains:**/beet*.json"
+    "workspaceContains:**/beet*.json",
+    "onCommand:vscode-beet.build",
+    "onCommand:vscode-beet.cache",
+    "onCommand:vscode-beet.clear-cache",
+    "onCommand:vscode-beet.link",
+    "onCommand:vscode-beet.clear-link",
+    "onCommand:vscode-beet.watch"
   ],
   "categories": [
     "Linters"
@@ -33,6 +39,44 @@
       {
         "fileMatch": "beet*.json",
         "url": "./res/schemas/beet_pipeline.json"
+      }
+    ],
+    "commands": [
+      {
+        "command": "vscode-beet.build",
+        "title": "Beet: Build"
+      },
+      {
+        "command": "vscode-beet.cache",
+        "title": "Beet: Cache"
+      },
+      {
+        "command": "vscode-beet.clear-cache",
+        "title": "Beet: Clear Cache"
+      },
+      {
+        "command": "vscode-beet.link",
+        "title": "Beet: Link"
+      },
+      {
+        "command": "vscode-beet.clear-link",
+        "title": "Beet: Clear Link"
+      },
+      {
+        "command": "vscode-beet.watch",
+        "title": "Beet: Watch"
+      }
+    ],
+    "taskDefinitions": [
+      {
+        "type": "beet",
+        "properties": {
+          "task": {
+            "type": "string",
+            "description": "The beet task to run"
+          }
+        },
+        "required": ["task"]
       }
     ]
   },
