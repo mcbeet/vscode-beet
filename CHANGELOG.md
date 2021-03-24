@@ -13,10 +13,5 @@ Changelog
 
 * schema for lectern config ([fb301de](https://github.com/mcbeet/vscode-beet/commit/fb301de902ab95b22a43d888769f7ab2f7c48016))
 
-# Changelog
-
-## [Unreleased]
-- Packaging json schemas in extension
-
 ## [0.0.1]
 - Added autocomplete for beet project configuration files
