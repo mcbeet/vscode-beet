@@ -78,7 +78,17 @@
         },
         "required": ["task"]
       }
-    ]
+    ],
+    "configuration": {
+      "title": "Beet",
+      "properties": {
+        "beet.pythonPath": {
+          "type": "string",
+          "scope": "resource",
+          "markdownDescription": "Pyton interpreter used to execute beet. If not set, defaults to `#python.pythonPath#` then \"python\""
+        }
+      }
+    }
   },
   "scripts": {
     "vscode:prepublish": "yarn run compile",

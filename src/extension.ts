@@ -11,17 +11,17 @@ export function activate(ctx: vscode.ExtensionContext) {
     generateBeetTasks();
     registerBeetTasks(ctx);
 
-    vscode.workspace.onDidChangeConfiguration((e) => {
-        if (e.affectsConfiguration("python.pythonPath")) {
+    ctx.subscriptions.push(vscode.workspace.onDidChangeConfiguration((e) => {
+        if (e.affectsConfiguration("beet.pythonPath") || e.affectsConfiguration("python.pythonPath")) {
             generateBeetTasks();
         }
-    });
+    }));
 }
 
 export function deactivate() {}
 
 function generateBeetTasks() {
-    let python = vscode.workspace.getConfiguration("python").get("pythonPath", "python");
+    let python = getPythonPath();
 
     buildTask = createBeetTask(python, "build");
     cacheTask = createBeetTask(python, "cache");
@@ -69,4 +69,14 @@ function createBeetTask(python: string, taskName: string, args: string[] = []) {
     task.presentationOptions.clear = true;
 
     return task;
+}
+
+function getPythonPath(): string {
+    let path: string | undefined = vscode.workspace.getConfiguration("beet").get("pythonPath");
+
+    if(!path || path.length === 0) {
+        path = vscode.workspace.getConfiguration("python").get("pythonPath", "python");
+    }
+
+    return path;
 }
