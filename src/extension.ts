@@ -1,4 +1,5 @@
 import * as vscode from 'vscode';
+import * as beet from './beet.js';
 
 let cacheTask: vscode.Task;
 let clearCacheTask: vscode.Task;
@@ -21,7 +22,11 @@ export function deactivate() {}
 
 function registerCommands(ctx: vscode.ExtensionContext) {
     ctx.subscriptions.push(
-        vscode.commands.registerCommand("vscode-beet.build", buildTask),
+        vscode.commands.registerCommand("vscode-beet.build", () => {
+            beet.getConfigFiles()
+                .then((files) => pickFile(files))
+                .then((cfgFile) => beet.build(getPythonPath(), cfgFile?.fsPath));
+        }),
         vscode.commands.registerCommand("vscode-beet.inspect-cache", () => vscode.tasks.executeTask(cacheTask)),
         vscode.commands.registerCommand("vscode-beet.clear-cache", () => vscode.tasks.executeTask(clearCacheTask)),
         vscode.commands.registerCommand("vscode-beet.link", () => vscode.tasks.executeTask(linkTask)),
@@ -33,26 +38,13 @@ function registerCommands(ctx: vscode.ExtensionContext) {
 function updateBeetTasks() {
     let python = getPythonPath();
 
-    cacheTask = createBeetTask(python, "inspect cache", ["cache"]);
-    clearCacheTask = createBeetTask(python, "clear cache", ["cache", "-c"]);
-    linkTask = createBeetTask(python, "link", ["link"]);
-    clearLinkTask = createBeetTask(python, "clear link", ["link", "-c"]);
-    watchTask = createBeetTask(python, "watch", ["watch"]);
+    cacheTask = beet.createTask(python, "inspect cache", ["cache"]);
+    clearCacheTask = beet.createTask(python, "clear cache", ["cache", "-c"]);
+    linkTask = beet.createTask(python, "link", ["link"]);
+    clearLinkTask = beet.createTask(python, "clear link", ["link", "-c"]);
+    watchTask = beet.createTask(python, "watch", ["watch"]);
 }
 
-function createBeetTask(python: string, taskName: string, beetArgs: string[] = []) {
-    let task = new vscode.Task(
-        {type: "beet", "task": taskName},
-        vscode.TaskScope.Workspace,
-        taskName,
-        "beet",
-        new vscode.ProcessExecution(python, ["-m", "beet"].concat(beetArgs)),
-    );
-
-    task.presentationOptions.clear = true;
-
-    return task;
-}
 
 function getPythonPath(): string {
     let path: string | undefined = vscode.workspace.getConfiguration("beet").get("pythonPath");
@@ -64,22 +56,19 @@ function getPythonPath(): string {
     return path;
 }
 
-async function buildTask() {
-    vscode.workspace.findFiles("**/beet*.json").then((files) => {
-        if(files.length === 0) {
-            return;
+async function pickFile(files: vscode.Uri[]): Promise<vscode.Uri | undefined> {
+    if(files.length === 0) {
+        return new Promise(() => undefined);
+    }
+
+    let options: {[key: string]: (vscode.Uri)} = {};
+    files.filter((f) => f.scheme === "file").forEach((f) => {
+        options[vscode.workspace.asRelativePath(f.path)] = f;
+    });
+
+    return vscode.window.showQuickPick(Object.keys(options).map((label) => ({label})), {placeHolder: "Pick beet config file"}).then((selection) => {
+        if(selection) {
+            return options[selection.label];
         }
-
-        let options: {[key: string]: (vscode.Uri)} = {};
-        files.filter((f) => f.scheme === "file").forEach((f) => {
-            options[vscode.workspace.asRelativePath(f.path)] = f;
-        });
-
-        vscode.window.showQuickPick(Object.keys(options).map((label) => ({label})), {placeHolder: "Pick beet config file"}).then(async (selection) => {
-            if(selection) {
-                let cfgFilePath = options[selection.label].fsPath;
-                vscode.tasks.executeTask(createBeetTask(getPythonPath(), "build", ["-c", cfgFilePath, "build"]));
-            }
-        });
     });
 }
