@@ -57,8 +57,8 @@ function getPythonPath(): string {
 }
 
 async function pickFile(files: vscode.Uri[]): Promise<vscode.Uri | undefined> {
-    if(files.length === 0) {
-        return new Promise(() => undefined);
+    if(files.length <= 1) {
+        return undefined;
     }
 
     let options: {[key: string]: (vscode.Uri)} = {};
