@@ -1,5 +1,12 @@
 Changelog
 
+## [0.4.1](https://github.com/mcbeet/vscode-beet/compare/v0.4.0...v0.4.1) (2021-03-25)
+
+
+### Bug Fixes
+
+* Build command automatically selects config file if only one exists ([3395be6](https://github.com/mcbeet/vscode-beet/commit/3395be6a5f63037ff1e8fc0369324bb15876e7dc))
+
 # [0.4.0](https://github.com/mcbeet/vscode-beet/compare/v0.3.0...v0.4.0) (2021-03-25)
 
 
