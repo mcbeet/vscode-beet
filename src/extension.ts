@@ -1,6 +1,6 @@
 import * as vscode from 'vscode';
-import * as beet from './beet.js';
-import * as config from './config.js';
+import * as beet from './beet';
+import * as config from './config';
 
 let cacheTask: vscode.Task;
 let clearCacheTask: vscode.Task;
@@ -27,8 +27,8 @@ function registerCommands(ctx: vscode.ExtensionContext) {
     ctx.subscriptions.push(
         vscode.commands.registerCommand("vscode-beet.build", () => {
             beet.getConfigFiles()
-                .then((files) => pickFile(files))
-                .then((cfgFile) => beet.build(config.getPythonPath(), cfgFile?.fsPath));
+                .then((files) => files.length > 1 ? pickFile(files, "Pick beet config file") : files[0])
+                .then((cfgFile) => cfgFile ? beet.build(config.getPythonPath(), cfgFile.fsPath) : undefined);
         }),
         vscode.commands.registerCommand("vscode-beet.inspect-cache", () => vscode.tasks.executeTask(cacheTask)),
         vscode.commands.registerCommand("vscode-beet.clear-cache", () => vscode.tasks.executeTask(clearCacheTask)),
@@ -48,18 +48,20 @@ function updateBeetTasks() {
     watchTask = beet.createTask(python, "watch", ["watch"]);
 }
 
-async function pickFile(files: vscode.Uri[]): Promise<vscode.Uri | undefined> {
-    if(files.length <= 1) {
+async function pickFile(files: vscode.Uri[], placeHolder: string): Promise<vscode.Uri | undefined> {
+    if (files.length === 0) {
         return undefined;
+    } else if(files.length === 1) {
+        return files[0];
     }
 
-    let options: {[key: string]: (vscode.Uri)} = {};
+    let options: { [key: string]: (vscode.Uri) } = {};
     files.filter((f) => f.scheme === "file").forEach((f) => {
         options[vscode.workspace.asRelativePath(f.path)] = f;
     });
 
-    return vscode.window.showQuickPick(Object.keys(options).map((label) => ({label})), {placeHolder: "Pick beet config file"}).then((selection) => {
-        if(selection) {
+    return vscode.window.showQuickPick(Object.keys(options).map((label) => ({ label })), { placeHolder }).then((selection) => {
+        if (selection) {
             return options[selection.label];
         }
     });
