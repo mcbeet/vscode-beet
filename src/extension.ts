@@ -1,5 +1,8 @@
 import * as vscode from 'vscode';
 import * as beet from './beet.js';
+import * as which from "which";
+import * as fs from 'fs';
+import * as path from 'path';
 
 let cacheTask: vscode.Task;
 let clearCacheTask: vscode.Task;
@@ -8,11 +11,13 @@ let clearLinkTask: vscode.Task;
 let watchTask: vscode.Task;
 
 export function activate(ctx: vscode.ExtensionContext) {
+    checkPythonPath();
     updateBeetTasks();
     registerCommands(ctx);
 
     ctx.subscriptions.push(vscode.workspace.onDidChangeConfiguration((e) => {
         if (e.affectsConfiguration("beet.pythonPath") || e.affectsConfiguration("python.pythonPath")) {
+            checkPythonPath();
             updateBeetTasks();
         }
     }));
@@ -45,6 +50,23 @@ function updateBeetTasks() {
     watchTask = beet.createTask(python, "watch", ["watch"]);
 }
 
+function checkPythonPath() {
+    let pythonPath = getPythonPath();
+
+    // Check if path points to executable
+    if(vscode.workspace.workspaceFolders) {
+        if(fs.existsSync(path.resolve(vscode.workspace.workspaceFolders[0].uri.fsPath, pythonPath))) {
+            return;
+        }
+    }
+
+    // Check if path is in PATH
+    which(pythonPath, {}, (err) => {
+        if(err) {
+            vscode.window.showErrorMessage(`Beet: Invalid python path: '${pythonPath}'`);
+        }
+    });
+}
 
 function getPythonPath(): string {
     let path: string | undefined = vscode.workspace.getConfiguration("beet").get("pythonPath");

@@ -76,7 +76,9 @@
             "description": "The beet task to run"
           }
         },
-        "required": ["task"]
+        "required": [
+          "task"
+        ]
       }
     ],
     "configuration": {
@@ -118,5 +120,9 @@
   },
   "engines": {
     "vscode": "^1.54.0"
+  },
+  "dependencies": {
+    "@types/which": "^2.0.0",
+    "which": "^2.0.2"
   }
 }
