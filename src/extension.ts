@@ -1,8 +1,6 @@
 import * as vscode from 'vscode';
 import * as beet from './beet.js';
-import * as which from "which";
-import * as fs from 'fs';
-import * as path from 'path';
+import * as config from './config.js';
 
 let cacheTask: vscode.Task;
 let clearCacheTask: vscode.Task;
@@ -11,13 +9,13 @@ let clearLinkTask: vscode.Task;
 let watchTask: vscode.Task;
 
 export function activate(ctx: vscode.ExtensionContext) {
-    checkPythonPath();
+    config.checkPythonPath();
     updateBeetTasks();
     registerCommands(ctx);
 
     ctx.subscriptions.push(vscode.workspace.onDidChangeConfiguration((e) => {
         if (e.affectsConfiguration("beet.pythonPath") || e.affectsConfiguration("python.pythonPath")) {
-            checkPythonPath();
+            config.checkPythonPath();
             updateBeetTasks();
         }
     }));
@@ -30,7 +28,7 @@ function registerCommands(ctx: vscode.ExtensionContext) {
         vscode.commands.registerCommand("vscode-beet.build", () => {
             beet.getConfigFiles()
                 .then((files) => pickFile(files))
-                .then((cfgFile) => beet.build(getPythonPath(), cfgFile?.fsPath));
+                .then((cfgFile) => beet.build(config.getPythonPath(), cfgFile?.fsPath));
         }),
         vscode.commands.registerCommand("vscode-beet.inspect-cache", () => vscode.tasks.executeTask(cacheTask)),
         vscode.commands.registerCommand("vscode-beet.clear-cache", () => vscode.tasks.executeTask(clearCacheTask)),
@@ -41,41 +39,13 @@ function registerCommands(ctx: vscode.ExtensionContext) {
 }
 
 function updateBeetTasks() {
-    let python = getPythonPath();
+    let python = config.getPythonPath();
 
     cacheTask = beet.createTask(python, "inspect cache", ["cache"]);
     clearCacheTask = beet.createTask(python, "clear cache", ["cache", "-c"]);
     linkTask = beet.createTask(python, "link", ["link"]);
     clearLinkTask = beet.createTask(python, "clear link", ["link", "-c"]);
     watchTask = beet.createTask(python, "watch", ["watch"]);
-}
-
-function checkPythonPath() {
-    let pythonPath = getPythonPath();
-
-    // Check if path points to executable
-    if(vscode.workspace.workspaceFolders) {
-        if(fs.existsSync(path.resolve(vscode.workspace.workspaceFolders[0].uri.fsPath, pythonPath))) {
-            return;
-        }
-    }
-
-    // Check if path is in PATH
-    which(pythonPath, {}, (err) => {
-        if(err) {
-            vscode.window.showErrorMessage(`Beet: Invalid python path: '${pythonPath}'`);
-        }
-    });
-}
-
-function getPythonPath(): string {
-    let path: string | undefined = vscode.workspace.getConfiguration("beet").get("pythonPath");
-
-    if(!path || path.length === 0) {
-        path = vscode.workspace.getConfiguration("python").get("pythonPath", "python");
-    }
-
-    return path;
 }
 
 async function pickFile(files: vscode.Uri[]): Promise<vscode.Uri | undefined> {
