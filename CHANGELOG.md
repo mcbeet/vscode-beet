@@ -1,5 +1,13 @@
 Changelog
 
+## [0.4.2](https://github.com/mcbeet/vscode-beet/compare/v0.4.1...v0.4.2) (2021-03-25)
+
+
+### Bug Fixes
+
+* Added check if beet.pyhonPath is valid ([ae63ef0](https://github.com/mcbeet/vscode-beet/commit/ae63ef0bdad8dcbdb622b08ba01c9e6d2bd118ae))
+* Beet tasks were not executed correctly ([508e34e](https://github.com/mcbeet/vscode-beet/commit/508e34ed3bae612bc669da645833e03a21c687d8))
+
 ## [0.4.1](https://github.com/mcbeet/vscode-beet/compare/v0.4.0...v0.4.1) (2021-03-25)
 
 
