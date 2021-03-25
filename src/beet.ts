@@ -2,10 +2,11 @@ import * as vscode from 'vscode';
 
 export function createTask(python: string, taskName: string, taskArgs: string[], configFile: string | undefined = undefined) {
     let args: string[] = [];
+
     if(configFile) {
         args.push("-c", configFile);
     }
-    args.concat(taskArgs);
+    args = args.concat(taskArgs);
 
     let task = new vscode.Task(
         {type: "beet", "task": taskName},
