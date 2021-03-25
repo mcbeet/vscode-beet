@@ -1,5 +1,12 @@
 Changelog
 
+# [0.4.0](https://github.com/mcbeet/vscode-beet/compare/v0.3.0...v0.4.0) (2021-03-25)
+
+
+### Features
+
+* Config file is now selectable in build task ([af47c8c](https://github.com/mcbeet/vscode-beet/commit/af47c8cf3705d36defbf58c1cb8d4d971c187642))
+
 # [0.3.0](https://github.com/mcbeet/vscode-beet/compare/v0.2.0...v0.3.0) (2021-03-24)
 
 
