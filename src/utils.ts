@@ -19,7 +19,7 @@ export async function listDir(path: string) {
     }
 }
 
-export async function pickFile(files: vscode.Uri[], placeHolder: string): Promise<vscode.Uri | undefined> {
+export async function pickFile(files: vscode.Uri[], labels: string[], placeHolder: string): Promise<vscode.Uri | undefined> {
     if (files.length === 0) {
         return undefined;
     } else if(files.length === 1) {
@@ -27,11 +27,11 @@ export async function pickFile(files: vscode.Uri[], placeHolder: string): Promis
     }
 
     let options: { [key: string]: (vscode.Uri) } = {};
-    files.filter((f) => f.scheme === "file").forEach((f) => {
-        options[vscode.workspace.asRelativePath(f.fsPath)] = f;
+    files.forEach((f, i) => {
+        options[labels[i]] = f;
     });
 
-    return vscode.window.showQuickPick(Object.keys(options).map((label) => ({ label })), { placeHolder }).then((selection) => {
+    return vscode.window.showQuickPick(labels.map((label) => ({ label })), { placeHolder }).then((selection) => {
         return selection ? options[selection.label] : undefined;
     });
 }

@@ -56,7 +56,7 @@ async function build() {
         case 1:
             configFile = configFiles[0];
         default:
-            let selection = await utils.pickFile(configFiles, "Pick beet config file");
+            let selection = await utils.pickFile(configFiles, configFiles.map((f) => vscode.workspace.asRelativePath(f)), "Pick beet config file");
             if(!selection) {
                 return;
             }
