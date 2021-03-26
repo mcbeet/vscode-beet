@@ -3,7 +3,7 @@ import * as path from 'path';
 import * as fs from 'fs';
 import * as which from 'which';
 import * as os from 'os';
-import * as nodeUtils from 'util';
+import * as utils from './utils';
 
 export function checkPythonPath() {
     let pythonPath = getPythonPath();
@@ -34,6 +34,28 @@ export function getPythonPath(): string {
 }
 
 export async function getMinecraftPath() {
-    let x = await locateMinecraft();
-    console.log(x);
+    return await locateMinecraft();
+}
+
+async function locateMinecraft() {
+    let mcPath: string | undefined;
+    switch (os.platform()) {
+        case 'win32':
+            mcPath = path.resolve(os.homedir(), "AppData", "Roaming", ".minecraft");
+            break;
+        case 'darwin':
+            mcPath = path.resolve(os.homedir(), "Application Support", "minecraft");
+            break;
+        case 'linux':
+            mcPath = path.resolve(os.homedir(), ".minecraft");
+            break;
+        default:
+            mcPath = undefined;
+    }
+
+    if(!mcPath || !await utils.isDirectory(mcPath)) {
+        throw new Error("Couldn't locate minecraft");
+    }
+
+    return mcPath;
 }

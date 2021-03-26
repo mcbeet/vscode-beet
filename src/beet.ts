@@ -25,6 +25,10 @@ export async function build(pythonPath: string, configFile: string | undefined =
     return vscode.tasks.executeTask(createTask(pythonPath, "build", ["build"], configFile));
 }
 
+export async function link(pythonPath: string, target: string) {
+    return await vscode.tasks.executeTask(createTask(pythonPath, "build", ["link", target]));
+}
+
 export async function getConfigFiles() {
     return vscode.workspace.findFiles("**/beet*.json");
 }

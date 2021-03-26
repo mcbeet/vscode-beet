@@ -1,11 +1,12 @@
 import * as vscode from 'vscode';
 import * as beet from './beet';
 import * as config from './config';
+import * as minecraft from './minecraft';
 import * as utils from './utils';
+import * as path from 'path';
 
 let cacheTask: vscode.Task;
 let clearCacheTask: vscode.Task;
-let linkTask: vscode.Task;
 let clearLinkTask: vscode.Task;
 let watchTask: vscode.Task;
 
@@ -29,7 +30,7 @@ function registerCommands(ctx: vscode.ExtensionContext) {
         vscode.commands.registerCommand("vscode-beet.build", build),
         vscode.commands.registerCommand("vscode-beet.inspect-cache", () => vscode.tasks.executeTask(cacheTask)),
         vscode.commands.registerCommand("vscode-beet.clear-cache", () => vscode.tasks.executeTask(clearCacheTask)),
-        vscode.commands.registerCommand("vscode-beet.link", () => vscode.tasks.executeTask(linkTask)),
+        vscode.commands.registerCommand("vscode-beet.link-world", linkWorld),
         vscode.commands.registerCommand("vscode-beet.clear-link", () => vscode.tasks.executeTask(clearLinkTask)),
         vscode.commands.registerCommand("vscode-beet.watch", () => vscode.tasks.executeTask(watchTask))
     );
@@ -40,7 +41,6 @@ function updateBeetTasks() {
 
     cacheTask = beet.createTask(python, "inspect cache", ["cache"]);
     clearCacheTask = beet.createTask(python, "clear cache", ["cache", "-c"]);
-    linkTask = beet.createTask(python, "link", ["link"]);
     clearLinkTask = beet.createTask(python, "clear link", ["link", "-c"]);
     watchTask = beet.createTask(python, "watch", ["watch"]);
 }
@@ -64,4 +64,30 @@ async function build() {
     }
 
     beet.build(config.getPythonPath(), configFile.fsPath);
+}
+
+async function linkWorld() {
+    let saves: vscode.Uri[];
+    try {
+        saves = await minecraft.getSaves();
+    } catch(e) {
+        vscode.window.showErrorMessage(`Beet: ${e.message}`);
+        return;
+    }
+
+    if(saves.length === 0) {
+        vscode.window.showErrorMessage("Beet: Minecraft saves folder doesn't contain any worlds");
+        return;
+    }
+
+    let selectedWorld = await utils.pickFile(saves, saves.map((s) => path.basename(s.fsPath)), "Pick world to link");
+    if(!selectedWorld) {
+        return;
+    }
+
+    try {
+        await beet.link(config.getPythonPath(), selectedWorld.fsPath);
+    } catch(e) {
+
+    }
 }

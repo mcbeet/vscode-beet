@@ -55,8 +55,8 @@
         "title": "Beet: Clear Cache"
       },
       {
-        "command": "vscode-beet.link",
-        "title": "Beet: Link"
+        "command": "vscode-beet.link-world",
+        "title": "Beet: Link World"
       },
       {
         "command": "vscode-beet.clear-link",
