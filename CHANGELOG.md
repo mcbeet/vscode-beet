@@ -1,5 +1,12 @@
 Changelog
 
+## [0.5.3](https://github.com/mcbeet/vscode-beet/compare/v0.5.2...v0.5.3) (2021-03-26)
+
+
+### Bug Fixes
+
+* Modules were not imported correctly ([e7ee23a](https://github.com/mcbeet/vscode-beet/commit/e7ee23a75fdc1f6317c84e5f61711e44346164ec))
+
 ## [0.5.2](https://github.com/mcbeet/vscode-beet/compare/v0.5.1...v0.5.2) (2021-03-26)
 
 
