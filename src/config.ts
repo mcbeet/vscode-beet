@@ -3,7 +3,7 @@ import * as path from 'path';
 import * as fs from 'fs';
 import * as which from 'which';
 import * as os from 'os';
-import * as utils from './utils';
+import * as utils from './utils.js';
 
 export function checkPythonPath() {
     let pythonPath = getPythonPath();

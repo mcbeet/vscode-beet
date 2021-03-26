@@ -1,6 +1,6 @@
 import * as vscode from 'vscode';
 import * as path from 'path';
-import * as utils from './utils';
+import * as utils from './utils.js';
 import * as config from './config.js';
 
 export async function getSaves() {
