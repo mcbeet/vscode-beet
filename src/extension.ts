@@ -53,7 +53,7 @@ async function pickFile(files: vscode.Uri[], placeHolder: string): Promise<vscod
 
     let options: { [key: string]: (vscode.Uri) } = {};
     files.filter((f) => f.scheme === "file").forEach((f) => {
-        options[vscode.workspace.asRelativePath(f.path)] = f;
+        options[vscode.workspace.asRelativePath(f.fsPath)] = f;
     });
 
     return vscode.window.showQuickPick(Object.keys(options).map((label) => ({ label })), { placeHolder }).then((selection) => {
