@@ -15,7 +15,7 @@ export async function listDir(path: string) {
     try {
         return await util.promisify(fs.readdir)(path);
     } catch(e) {
-        return [];
+        throw Error(`Invalid directory path: ${path}`);
     }
 }
 

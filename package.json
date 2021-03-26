@@ -88,6 +88,11 @@
           "type": "string",
           "scope": "resource",
           "markdownDescription": "Pyton interpreter used to execute beet. If not set, defaults to `#python.pythonPath#` then \"python\""
+        },
+        "beet.minecraftPath": {
+          "type": "string",
+          "scope": "resource",
+          "markdownDescription": "Path to minecraft. Defaults to `%AppData%\\.minecraft` on windows, `~/.minecraft` on linux and `~/Application Support/minecraft` on darwin"
         }
       }
     }

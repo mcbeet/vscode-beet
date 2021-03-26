@@ -34,7 +34,12 @@ export function getPythonPath(): string {
 }
 
 export async function getMinecraftPath() {
-    return await locateMinecraft();
+    let mcPath: string | undefined = vscode.workspace.getConfiguration("beet").get("minecraftPath");
+    if(!mcPath || mcPath.length === 0) {
+        return await locateMinecraft();
+    }
+
+    return mcPath;
 }
 
 async function locateMinecraft() {
