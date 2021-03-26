@@ -1,5 +1,12 @@
 Changelog
 
+## [0.5.4](https://github.com/mcbeet/vscode-beet/compare/v0.5.3...v0.5.4) (2021-03-26)
+
+
+### Bug Fixes
+
+* Using webpack to build extension ([f83b5fd](https://github.com/mcbeet/vscode-beet/commit/f83b5fddf8b29b66387b896bb1b02c20c1c909e6))
+
 ## [0.5.3](https://github.com/mcbeet/vscode-beet/compare/v0.5.2...v0.5.3) (2021-03-26)
 
 
