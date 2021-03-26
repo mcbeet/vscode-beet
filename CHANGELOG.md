@@ -1,5 +1,18 @@
 Changelog
 
+# [0.5.0](https://github.com/mcbeet/vscode-beet/compare/v0.4.2...v0.5.0) (2021-03-26)
+
+
+### Bug Fixes
+
+* Build executed if no config file was selected ([b853783](https://github.com/mcbeet/vscode-beet/commit/b8537835238f684b781d82234ed3d8dbe057579c))
+
+
+### Features
+
+* Added beet.minecraftPath configuration ([5a9b5fd](https://github.com/mcbeet/vscode-beet/commit/5a9b5fde32d8f081dc05054f99c7b6c6a7d52ee7))
+* Link command now lets you pick worlds to link to ([f820ee8](https://github.com/mcbeet/vscode-beet/commit/f820ee80ba39b989149c89ae81679aec3bdc9cb0))
+
 ## [0.4.2](https://github.com/mcbeet/vscode-beet/compare/v0.4.1...v0.4.2) (2021-03-25)
 
 
