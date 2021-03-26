@@ -21,7 +21,7 @@
     "onCommand:vscode-beet.build",
     "onCommand:vscode-beet.cache",
     "onCommand:vscode-beet.clear-cache",
-    "onCommand:vscode-beet.link",
+    "onCommand:vscode-beet.link-world",
     "onCommand:vscode-beet.clear-link",
     "onCommand:vscode-beet.watch"
   ],
