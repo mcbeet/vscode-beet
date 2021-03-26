@@ -1,5 +1,12 @@
 Changelog
 
+## [0.5.2](https://github.com/mcbeet/vscode-beet/compare/v0.5.1...v0.5.2) (2021-03-26)
+
+
+### Bug Fixes
+
+* Link world command was not included in activation events ([9f396fd](https://github.com/mcbeet/vscode-beet/commit/9f396fd486e439a1485c9bb364c7922b756e6a76))
+
 ## [0.5.1](https://github.com/mcbeet/vscode-beet/compare/v0.5.0...v0.5.1) (2021-03-26)
 
 
