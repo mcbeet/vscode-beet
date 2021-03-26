@@ -1,5 +1,12 @@
 Changelog
 
+## [0.5.1](https://github.com/mcbeet/vscode-beet/compare/v0.5.0...v0.5.1) (2021-03-26)
+
+
+### Bug Fixes
+
+* Commands were not registered correctly ([be536a3](https://github.com/mcbeet/vscode-beet/commit/be536a3e3ac47b0d3bede60adf5195974837833e))
+
 # [0.5.0](https://github.com/mcbeet/vscode-beet/compare/v0.4.2...v0.5.0) (2021-03-26)
 
 
