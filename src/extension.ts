@@ -25,11 +25,7 @@ export function deactivate() {}
 
 function registerCommands(ctx: vscode.ExtensionContext) {
     ctx.subscriptions.push(
-        vscode.commands.registerCommand("vscode-beet.build", () => {
-            beet.getConfigFiles()
-                .then((files) => files.length > 1 ? pickFile(files, "Pick beet config file") : files[0])
-                .then((cfgFile) => cfgFile ? beet.build(config.getPythonPath(), cfgFile.fsPath) : undefined);
-        }),
+        vscode.commands.registerCommand("vscode-beet.build", build),
         vscode.commands.registerCommand("vscode-beet.inspect-cache", () => vscode.tasks.executeTask(cacheTask)),
         vscode.commands.registerCommand("vscode-beet.clear-cache", () => vscode.tasks.executeTask(clearCacheTask)),
         vscode.commands.registerCommand("vscode-beet.link", () => vscode.tasks.executeTask(linkTask)),
@@ -65,4 +61,25 @@ async function pickFile(files: vscode.Uri[], placeHolder: string): Promise<vscod
             return options[selection.label];
         }
     });
+}
+
+async function build() {
+    let configFiles = await beet.getConfigFiles();
+
+    let configFile: vscode.Uri;
+    switch(configFiles.length) {
+        case 0:
+            vscode.window.showErrorMessage("Beet: No config files found");
+            return;
+        case 1:
+            configFile = configFiles[0];
+        default:
+            let selection = await pickFile(configFiles, "Pick beet config file");
+            if(!selection) {
+                return;
+            }
+            configFile = selection;
+    }
+
+    beet.build(config.getPythonPath(), configFile.fsPath);
 }
