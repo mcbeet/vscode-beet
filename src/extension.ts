@@ -27,10 +27,10 @@ export function deactivate() {}
 
 function registerCommands(ctx: vscode.ExtensionContext) {
     ctx.subscriptions.push(
-        vscode.commands.registerCommand("vscode-beet.build", build),
+        vscode.commands.registerCommand("vscode-beet.build", () => build()),
         vscode.commands.registerCommand("vscode-beet.inspect-cache", () => vscode.tasks.executeTask(cacheTask)),
         vscode.commands.registerCommand("vscode-beet.clear-cache", () => vscode.tasks.executeTask(clearCacheTask)),
-        vscode.commands.registerCommand("vscode-beet.link-world", linkWorld),
+        vscode.commands.registerCommand("vscode-beet.link-world", () => linkWorld()),
         vscode.commands.registerCommand("vscode-beet.clear-link", () => vscode.tasks.executeTask(clearLinkTask)),
         vscode.commands.registerCommand("vscode-beet.watch", () => vscode.tasks.executeTask(watchTask))
     );
