@@ -15,7 +15,7 @@
     "url": "https://github.com/mcbeet/vscode-beet/issues"
   },
   "license": "MIT",
-  "main": "./out/extension.js",
+  "main": "dist/extension.js",
   "activationEvents": [
     "workspaceContains:**/beet*.json",
     "onCommand:vscode-beet.build",
@@ -98,13 +98,12 @@
     }
   },
   "scripts": {
-    "vscode:prepublish": "yarn run compile",
-    "compile": "tsc -p ./",
+    "build": "webpack --mode \"production\"",
+    "build:dev": "webpack --mode \"development\"",
     "watch": "tsc -watch -p ./",
-    "pretest": "yarn run compile && yarn run lint",
-    "lint": "eslint src --ext ts",
-    "test": "node ./out/test/runTest.js",
-    "release:dry": "semantic-release --dry-run"
+    "release": "semantic-release",
+    "release:dry": "semantic-release --dry-run",
+    "vscode:prepublish": "webpack --mode \"production\""
   },
   "devDependencies": {
     "@semantic-release/changelog": "^5.0.1",
@@ -113,6 +112,7 @@
     "@types/mocha": "^8.0.4",
     "@types/node": "^12.11.7",
     "@types/vscode": "^1.54.0",
+    "@types/which": "^2.0.0",
     "@typescript-eslint/eslint-plugin": "^4.14.1",
     "@typescript-eslint/parser": "^4.14.1",
     "eslint": "^7.19.0",
@@ -120,14 +120,16 @@
     "mocha": "^8.2.1",
     "semantic-release": "^17.4.2",
     "semantic-release-vsce": "^3.3.0",
+    "ts-loader": "^8.0.18",
     "typescript": "^4.1.3",
-    "vscode-test": "^1.5.0"
+    "vscode-test": "^1.5.0",
+    "webpack": "^5.28.0",
+    "webpack-cli": "^4.5.0"
   },
   "engines": {
     "vscode": "^1.54.0"
   },
   "dependencies": {
-    "@types/which": "^2.0.0",
     "which": "^2.0.2"
   }
 }

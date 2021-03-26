@@ -1,8 +1,8 @@
 import * as vscode from 'vscode';
-import * as beet from './beet.js';
-import * as config from './config.js';
-import * as minecraft from './minecraft.js';
-import * as utils from './utils.js';
+import * as beet from './beet';
+import * as config from './config';
+import * as minecraft from './minecraft';
+import * as utils from './utils';
 import * as path from 'path';
 
 let cacheTask: vscode.Task;
