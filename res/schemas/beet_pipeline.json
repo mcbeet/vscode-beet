@@ -89,6 +89,18 @@
             "title": "Storage for during the build process. Also contains plugin config",
             "type": "object",
             "properties": {
+                "generate_format": {
+                    "title": "Default location of generated files",
+                    "type": "string"
+                },
+                "generate_namespace": {
+                    "title": "Default namespace of generated files",
+                    "type": "string"
+                },
+                "generate_prefix": {
+                    "title": "Default prefix of generated files",
+                    "type": "string"
+                },
                 "function_header": {
                     "title": "Plugin that adds a header to functions automatically",
                     "$ref": "contrib/function_header.json"
