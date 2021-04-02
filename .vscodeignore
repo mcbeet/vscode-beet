@@ -2,7 +2,7 @@
 **/*
 
 # Include
-!out/*.js
+!dist/*.js
 !res
 !CHANGELOG.md
 !README.md

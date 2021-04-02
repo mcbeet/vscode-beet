@@ -1,5 +1,33 @@
 Changelog
 
+## [0.5.4](https://github.com/mcbeet/vscode-beet/compare/v0.5.3...v0.5.4) (2021-03-26)
+
+
+### Bug Fixes
+
+* Using webpack to build extension ([f83b5fd](https://github.com/mcbeet/vscode-beet/commit/f83b5fddf8b29b66387b896bb1b02c20c1c909e6))
+
+## [0.5.3](https://github.com/mcbeet/vscode-beet/compare/v0.5.2...v0.5.3) (2021-03-26)
+
+
+### Bug Fixes
+
+* Modules were not imported correctly ([e7ee23a](https://github.com/mcbeet/vscode-beet/commit/e7ee23a75fdc1f6317c84e5f61711e44346164ec))
+
+## [0.5.2](https://github.com/mcbeet/vscode-beet/compare/v0.5.1...v0.5.2) (2021-03-26)
+
+
+### Bug Fixes
+
+* Link world command was not included in activation events ([9f396fd](https://github.com/mcbeet/vscode-beet/commit/9f396fd486e439a1485c9bb364c7922b756e6a76))
+
+## [0.5.1](https://github.com/mcbeet/vscode-beet/compare/v0.5.0...v0.5.1) (2021-03-26)
+
+
+### Bug Fixes
+
+* Commands were not registered correctly ([be536a3](https://github.com/mcbeet/vscode-beet/commit/be536a3e3ac47b0d3bede60adf5195974837833e))
+
 # [0.5.0](https://github.com/mcbeet/vscode-beet/compare/v0.4.2...v0.5.0) (2021-03-26)
 
 

@@ -1,7 +1,7 @@
 import * as vscode from 'vscode';
 import * as path from 'path';
 import * as utils from './utils';
-import * as config from './config.js';
+import * as config from './config';
 
 export async function getSaves() {
     let minecraftDir = await config.getMinecraftPath();
