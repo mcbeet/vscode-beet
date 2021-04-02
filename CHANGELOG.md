@@ -1,5 +1,12 @@
 Changelog
 
+# [0.6.0](https://github.com/mcbeet/vscode-beet/compare/v0.5.4...v0.6.0) (2021-04-02)
+
+
+### Features
+
+* add completion for generator metadata ([740239e](https://github.com/mcbeet/vscode-beet/commit/740239e1ba0a1af6a5cf27e147b6b74c354b71b2))
+
 ## [0.5.4](https://github.com/mcbeet/vscode-beet/compare/v0.5.3...v0.5.4) (2021-03-26)
 
 
