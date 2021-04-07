@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "load": {
+      "description": "Load csv translations",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "dialect": {
+      "description": "Use a specific csv dialect instead of relying on sniffing",
+      "type": "string", "enum": ["excel", "excel-tab", "unix"]
+    },
+    "prefix_identifiers": {
+      "description": "Whether translation keys should be prefixed by the filename",
+      "type": "boolean"
+    },
+    "delimiter": {
+      "description": "String used to delimit csv columns",
+      "type": "string",
+      "minLength": 1
+    }
+  }
+}

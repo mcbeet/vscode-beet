@@ -96,7 +96,11 @@
                     },
                     {
                         "const": "beet.contrib.babelbox",
-                        "description": "Plugin that loads translations from csv files"
+                        "description": "Plugin that loads translations from csv files. Uses a minimal custom implementation"
+                    },
+                    {
+                        "const": "babelbox.integration.beet",
+                        "description": "Plugin that loads translations from csv files. Uses https://pypi.org/project/babelbox/"
                     },
                     {
                         "const": "mcanitexgen.integration.beet",
@@ -127,24 +131,28 @@
                     "type": "string"
                 },
                 "function_header": {
-                    "description": "Function-header plugin configuration",
+                    "description": "Config for beet.contrib.function_header plugin",
                     "$ref": "contrib/function_header.json"
                 },
                 "lantern_load": {
-                    "description": "Lantern-load plugin configuration",
+                    "description": "Config for beet.lantern_load plugin",
                     "$ref": "contrib/lantern_load.json"
                 },
                 "render": {
-                    "description": "Render plugin configuration",
+                    "description": "Config for beet.contrib.render plugin",
                     "$ref": "contrib/render.json"
                 },
                 "sandstone": {
-                    "description": "Sandstone plugin configuration",
+                    "description": "Config for beet.contrib.sandstone plugin",
                     "$ref": "contrib/sandstone.json"
                 },
-                "babelbox": {
-                    "description": "Babelbox plugin configuration",
+                "babelbox-contrib": {
+                    "description": "Config for beet.contrib.babelbox plugin",
                     "$ref": "contrib/babelbox.json"
+                },
+                "babelbox": {
+                    "description": "Config for babelbox.integration.beet plugin",
+                    "$ref": "plugins/babelbox.json"
                 },
                 "mcanitexgen": {
                     "description": "Mcanitexgen plugin configuration",
