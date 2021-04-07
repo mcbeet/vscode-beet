@@ -1,5 +1,19 @@
 Changelog
 
+# [0.7.0](https://github.com/mcbeet/vscode-beet/compare/v0.6.0...v0.7.0) (2021-04-07)
+
+
+### Bug Fixes
+
+* No schema descriptions in Intellisense popup ([40a32be](https://github.com/mcbeet/vscode-beet/commit/40a32be84d57a21eb97dc0d8e6179f6dc7aef9e8))
+
+
+### Features
+
+* Add completion for mcanitexgen plugin ([cdf295d](https://github.com/mcbeet/vscode-beet/commit/cdf295dc6ec1b0cedf6f81434d7209d1d195854b))
+* Add completions for external babelbox plugin ([f845333](https://github.com/mcbeet/vscode-beet/commit/f845333e60a1bfa331e0b38ed96ab55d5f755c34))
+* Add pipeline completions ([f682e64](https://github.com/mcbeet/vscode-beet/commit/f682e64a7417f50f47451acddb50d6a0eab470b2))
+
 # [0.6.0](https://github.com/mcbeet/vscode-beet/compare/v0.5.4...v0.6.0) (2021-04-02)
 
 
