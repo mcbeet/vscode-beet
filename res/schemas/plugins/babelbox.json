@@ -14,7 +14,7 @@
       "type": "string", "enum": ["excel", "excel-tab", "unix"]
     },
     "prefix_identifiers": {
-      "description": "Whether translation keys should be prefixed by the filename",
+      "description": "Prefix translation keys with their path relative to their load entry",
       "type": "boolean"
     },
     "delimiter": {
