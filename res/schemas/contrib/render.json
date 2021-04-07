@@ -7,7 +7,7 @@
   },
   "definitions": {
     "pack_contents": {
-      "title": "Process pack contents with the template renderer",
+      "description": "Process pack contents with the template renderer",
       "type": "object",
       "additionalProperties": {
         "type": "array",

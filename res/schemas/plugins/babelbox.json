@@ -9,13 +9,18 @@
         "type": "string"
       }
     },
-    "filename_prefix": {
-      "description": "Whether translation keys should be prefixed by the filename",
-      "type": "boolean"
-    },
     "dialect": {
       "description": "Use a specific csv dialect instead of relying on sniffing",
       "type": "string", "enum": ["excel", "excel-tab", "unix"]
+    },
+    "prefix_identifiers": {
+      "description": "Whether translation keys should be prefixed by the filename",
+      "type": "boolean"
+    },
+    "delimiter": {
+      "description": "String used to delimit csv columns",
+      "type": "string",
+      "minLength": 1
     }
   }
 }

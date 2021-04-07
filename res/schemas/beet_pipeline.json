@@ -1,46 +1,43 @@
 {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "title": "Beet project config",
+    "description": "Beet project config",
     "type": "object",
     "properties": {
         "name": {
-            "title": "Project name",
+            "description": "Project name",
             "type": "string"
         },
         "description": {
-            "title": "Project description",
-            "description": "Will be included in pack.mcmeta",
+            "description": "Project description. Included in pack.mcmeta",
             "type": "string"
         },
         "author": {
-            "title": "Project author",
-            "description": "Will be included in pack.mcmeta",
+            "description": "Project author. Included in pack.mcmeta",
             "type": "string"
         },
         "version": {
-            "title": "Project version",
-            "description": "Will be included in pack.mcmeta",
+            "description": "Project version. Included in pack.mcmeta",
             "type": "string"
         },
 
         "directory": {
-            "title": "Root directory of the project",
+            "description": "Root directory of the project",
             "type": "string"
         },
         "extend": {
-            "title": "List of project config files to inherit from",
+            "description": "List of project config files to inherit from",
             "type": "array",
             "items": {
                 "type": "string"
             }
         },
         "output": {
-            "title": "Output directory",
+            "description": "Output directory",
             "directory": "Generated files will be put here",
             "type": "string"
         },
         "ignore": {
-            "title": "List of paths whose modification should be ignored by the watch command",
+            "description": "List of paths whose modification should be ignored by the watch command",
             "type": "array",
             "items": {
                 "type": "string"
@@ -54,72 +51,112 @@
         },
 
         "require": {
-            "title": "List of plugins running before the bootstrap plugin",
+            "description": "List of plugins running before the bootstrap plugin",
             "type": "array",
             "items": {
                 "type": "string"
             }
         },
         "templates": {
-            "title": "List of directories containing rendering templates",
+            "description": "List of directories containing rendering templates",
             "type": "array",
             "items": {
                 "type": "string"
             }
         },
         "data_pack": {
-            "title": "Datapack config",
+            "description": "Datapack config",
             "$ref": "#/definitions/pack_config"
         },
         "resource_pack": {
-            "title": "Resourcepack config",
+            "description": "Resourcepack config",
             "$ref": "#/definitions/pack_config"
         },
         "pipeline": {
-            "title": "The plugin pipeline",
+            "description": "The plugin pipeline",
             "type": "array",
+            "uniqueItems": true,
             "items": {
                 "anyOf": [
+                    {
+                        "const": "beet.contrib.function_header",
+                        "description": "Plugin that adds a header to functions automatically"
+                    },
+                    {
+                        "const": "beet.contrib.lantern_load",
+                        "description": "Plugin that implements Lantern Load runtime dependencies"
+                    },
+                    {
+                        "const": "beet.contrib.render",
+                        "description": "Plugin that invokes the built-in template renderer"
+                    },
+                    {
+                        "const": "beet.contrib.sandstone",
+                        "description": "Plugin that builds a sandstone project"
+                    },
+                    {
+                        "const": "beet.contrib.babelbox",
+                        "description": "Plugin that loads translations from csv files. Uses a minimal custom implementation"
+                    },
+                    {
+                        "const": "babelbox.integration.beet",
+                        "description": "Plugin that loads translations from csv files. Uses https://pypi.org/project/babelbox/"
+                    },
+                    {
+                        "const": "mcanitexgen.integration.beet",
+                        "description": "Plugin that generates .mcmeta files for animated textures"
+                    },
                     {"type": "string"},
-                    {"$ref": "#"}
+                    {
+                        "description": "Nested beet project configuration",
+                        "$ref": "#"
+                    }
                 ]
             }
         },
         "meta": {
-            "title": "Storage for during the build process. Also contains plugin config",
+            "description": "Storage for during the build process. Also contains plugin config",
             "type": "object",
             "properties": {
                 "generate_format": {
-                    "title": "Default location of generated files",
+                    "description": "Default location of generated files",
                     "type": "string"
                 },
                 "generate_namespace": {
-                    "title": "Default namespace of generated files",
+                    "description": "Default namespace of generated files",
                     "type": "string"
                 },
                 "generate_prefix": {
-                    "title": "Default prefix of generated files",
+                    "description": "Default prefix of generated files",
                     "type": "string"
                 },
                 "function_header": {
-                    "title": "Plugin that adds a header to functions automatically",
+                    "description": "Config for beet.contrib.function_header plugin",
                     "$ref": "contrib/function_header.json"
                 },
                 "lantern_load": {
-                    "title": "Plugin that implements Lantern Load runtime dependencies",
+                    "description": "Config for beet.lantern_load plugin",
                     "$ref": "contrib/lantern_load.json"
                 },
                 "render": {
-                    "title": "Plugin that invokes the built-in template renderer",
+                    "description": "Config for beet.contrib.render plugin",
                     "$ref": "contrib/render.json"
                 },
                 "sandstone": {
-                    "title": "Plugin that builds a sandstone project",
+                    "description": "Config for beet.contrib.sandstone plugin",
                     "$ref": "contrib/sandstone.json"
                 },
-                "babelbox": {
-                    "title": "Plugin that loads translations from csv files",
+                "babelbox-contrib": {
+                    "description": "Config for beet.contrib.babelbox plugin",
                     "$ref": "contrib/babelbox.json"
+                },
+                "babelbox": {
+                    "description": "Config for babelbox.integration.beet plugin",
+                    "$ref": "plugins/babelbox.json"
+                },
+                "mcanitexgen": {
+                    "description": "Mcanitexgen plugin configuration",
+                    "$ref": "plugins/mcanitexgen.json"
                 }
             }
         }
@@ -129,34 +166,32 @@
             "type": "object",
             "properties": {
                 "name": {
-                    "title": "Name of the pack",
-                    "description": "Overwrites project name",
+                    "description": "Name of the pack. Overwrites project name",
                     "type": "string"
                 },
                 "description": {
-                    "title": "Description of the pack",
-                    "description": "Overwrites project description",
+                    "description": "Description of the pack. Overwrites project description",
                     "type": "string"
                 },
                 "pack_format": {
-                    "title": "Pack version",
+                    "description": "Pack version",
                     "default": 6,
                     "type": "integer",
                     "minimum": 0
                 },
                 "zipped": {
-                    "title": "Wether the pack should be zipped",
+                    "description": "Wether the pack should be zipped",
                     "type": "boolean"
                 },
                 "load": {
-                    "title": "Load and merge existing packs",
+                    "description": "Load and merge existing packs",
                     "type": "array",
                     "items": {
                         "type": "string"
                     }
                 },
                 "render": {
-                    "title": "Groups of files that will be processed with templates",
+                    "description": "Groups of files that will be processed with templates",
                     "type": "object",
                     "additionalProperties": {
                         "type": "array",
