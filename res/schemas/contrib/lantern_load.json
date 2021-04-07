@@ -3,17 +3,15 @@
   "type": "object",
   "properties": {
     "id": {
-      "title": "Lantern Load project id",
-      "description": "Defaults to the project name",
+      "description": "Lantern Load project id. Defaults to the project name",
       "type": "string"
     },
     "version": {
-      "title": "Lantern Load version",
-      "description": "Defaults to the project version",
+      "description": "Lantern Load version. Defaults to the project version",
       "type": "string"
     },
     "dependencies": {
-      "title": "Project dependencies",
+      "description": "Project dependencies",
       "type": "object",
       "additionalProperties": {
         "anyOf": [{ "type": "string" }, { "type": "number" }]

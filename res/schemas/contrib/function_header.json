@@ -3,15 +3,14 @@
   "type": "object",
   "properties": {
     "match": {
-      "title": "Add the header to the selected functions",
+      "description": "Add the header to the selected functions",
       "type": "array",
       "items": {
         "type": "string"
       }
     },
     "template": {
-      "title": "The name of the template",
-      "description": "Defaults to \"function_header.mcfunction\"",
+      "description": "The name of the template. Defaults to \"function_header.mcfunction\"",
       "type": "string",
       "pattern": ".*\\.mcfunction"
     }

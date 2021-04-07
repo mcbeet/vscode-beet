@@ -3,8 +3,7 @@
   "type": "object",
   "properties": {
     "path": {
-      "title": "Path to the sandstone project",
-      "description": "Defaults to the current project directory",
+      "description": "Path to the sandstone project. Defaults to the current project directory",
       "type": "string"
     }
   }

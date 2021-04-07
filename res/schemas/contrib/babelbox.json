@@ -3,18 +3,18 @@
   "type": "object",
   "properties": {
     "load": {
-      "title": "Load csv translations",
+      "description": "Load csv translations",
       "type": "array",
       "items": {
         "type": "string"
       }
     },
     "filename_prefix": {
-      "title": "Whether translation keys should be prefixed by the filename",
+      "description": "Whether translation keys should be prefixed by the filename",
       "type": "boolean"
     },
     "dialect": {
-      "title": "Use a specific csv dialect instead of relying on sniffing",
+      "description": "Use a specific csv dialect instead of relying on sniffing",
       "type": "string", "enum": ["excel", "excel-tab", "unix"]
     }
   }
