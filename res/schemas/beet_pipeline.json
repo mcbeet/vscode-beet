@@ -99,7 +99,7 @@
                         "description": "Plugin that loads translations from csv files"
                     },
                     {
-                        "const": "mcanitexgen",
+                        "const": "mcanitexgen.integration.beet",
                         "description": "Plugin that generates .mcmeta files for animated textures"
                     },
                     {"type": "string"},
@@ -145,6 +145,10 @@
                 "babelbox": {
                     "description": "Babelbox plugin configuration",
                     "$ref": "contrib/babelbox.json"
+                },
+                "mcanitexgen": {
+                    "description": "Mcanitexgen plugin configuration",
+                    "$ref": "plugins/mcanitexgen.json"
                 }
             }
         }
