@@ -75,10 +75,38 @@
         "pipeline": {
             "description": "The plugin pipeline",
             "type": "array",
+            "uniqueItems": true,
             "items": {
                 "anyOf": [
+                    {
+                        "const": "beet.contrib.function_header",
+                        "description": "Plugin that adds a header to functions automatically"
+                    },
+                    {
+                        "const": "beet.contrib.lantern_load",
+                        "description": "Plugin that implements Lantern Load runtime dependencies"
+                    },
+                    {
+                        "const": "beet.contrib.render",
+                        "description": "Plugin that invokes the built-in template renderer"
+                    },
+                    {
+                        "const": "beet.contrib.sandstone",
+                        "description": "Plugin that builds a sandstone project"
+                    },
+                    {
+                        "const": "beet.contrib.babelbox",
+                        "description": "Plugin that loads translations from csv files"
+                    },
+                    {
+                        "const": "mcanitexgen",
+                        "description": "Plugin that generates .mcmeta files for animated textures"
+                    },
                     {"type": "string"},
-                    {"$ref": "#"}
+                    {
+                        "description": "Nested beet project configuration",
+                        "$ref": "#"
+                    }
                 ]
             }
         },
@@ -99,23 +127,23 @@
                     "type": "string"
                 },
                 "function_header": {
-                    "description": "Plugin that adds a header to functions automatically",
+                    "description": "Function-header plugin configuration",
                     "$ref": "contrib/function_header.json"
                 },
                 "lantern_load": {
-                    "description": "Plugin that implements Lantern Load runtime dependencies",
+                    "description": "Lantern-load plugin configuration",
                     "$ref": "contrib/lantern_load.json"
                 },
                 "render": {
-                    "description": "Plugin that invokes the built-in template renderer",
+                    "description": "Render plugin configuration",
                     "$ref": "contrib/render.json"
                 },
                 "sandstone": {
-                    "description": "Plugin that builds a sandstone project",
+                    "description": "Sandstone plugin configuration",
                     "$ref": "contrib/sandstone.json"
                 },
                 "babelbox": {
-                    "description": "Plugin that loads translations from csv files",
+                    "description": "Babelbox plugin configuration",
                     "$ref": "contrib/babelbox.json"
                 }
             }
