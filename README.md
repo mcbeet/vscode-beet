@@ -8,14 +8,19 @@ Adds VS Code support for [`beet`](https://github.com/mcbeet/beet) projects.<br>
 
 - [Features](#Features)
     - [Completion](#Completion)
+    - [Beet commands](#Beet-commands)
+        - [Link world](#Link-world)
+        - [Build](#Build)
+        - [Other](#Other)
+- [Changelog](https://github.com/mcbeet/vscode-beet/blob/main/CHANGELOG.md)
 
 # Features
-## Beet project file completion
+## Completion
 Adds linting and completions for `beet*.json` config files:
 
 ![](https://raw.githubusercontent.com/mcbeet/vscode-beet/main/images/demos/project_completion.gif)
 
-## Commands
+## Beet commands
 ### Link world
 Link your project to a minecraft save:
 
