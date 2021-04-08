@@ -49,7 +49,6 @@
                 "type": "string"
             }
         },
-
         "require": {
             "description": "List of plugins running before the bootstrap plugin",
             "type": "array",

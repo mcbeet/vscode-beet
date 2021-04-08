@@ -3,7 +3,7 @@
   "type": "object",
   "properties": {
     "load": {
-      "description": "Load csv translations",
+      "description": "List of glob patterns of csv file to create translations from",
       "type": "array",
       "items": {
         "type": "string"
