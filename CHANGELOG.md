@@ -1,5 +1,12 @@
 Changelog
 
+## [0.7.1](https://github.com/mcbeet/vscode-beet/compare/v0.7.0...v0.7.1) (2021-04-08)
+
+
+### Bug Fixes
+
+* Update babelbox/load description ([0781b5b](https://github.com/mcbeet/vscode-beet/commit/0781b5bb05df0ce1a0f981bdc280922c599d00fe))
+
 # [0.7.0](https://github.com/mcbeet/vscode-beet/compare/v0.6.0...v0.7.0) (2021-04-07)
 
 
