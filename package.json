@@ -99,7 +99,7 @@
   },
   "scripts": {
     "build": "webpack --mode \"production\"",
-    "build:dev": "webpack --mode \"development\"",
+    "build-dev": "webpack --mode \"development\" --watch",
     "watch": "tsc -watch -p ./",
     "release": "semantic-release",
     "release:dry": "semantic-release --dry-run",
