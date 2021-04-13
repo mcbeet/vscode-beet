@@ -5,12 +5,19 @@ import * as minecraft from './minecraft';
 import * as utils from './utils';
 import * as path from 'path';
 
+let SAVES: minecraft.Save[];
+
 let cacheTask: vscode.Task;
 let clearCacheTask: vscode.Task;
 let clearLinkTask: vscode.Task;
 let watchTask: vscode.Task;
 
 export function activate(ctx: vscode.ExtensionContext) {
+    // Fetch worlds
+    minecraft.getSaves().then((saves) => {
+        SAVES = saves;
+    });
+
     config.checkPythonPath();
     updateBeetTasks();
     registerCommands(ctx);
@@ -56,7 +63,7 @@ async function build() {
         case 1:
             configFile = configFiles[0];
         default:
-            let selection = await utils.pickFile(configFiles, configFiles.map((f) => vscode.workspace.asRelativePath(f)), "Pick beet config file");
+            let selection = await utils.pickFile(configFiles, configFiles.map((f) => ({label: vscode.workspace.asRelativePath(f)})), "Pick beet config file");
             if(!selection) {
                 return;
             }
@@ -67,20 +74,22 @@ async function build() {
 }
 
 async function linkWorld() {
-    let saves: vscode.Uri[];
     try {
-        saves = await minecraft.getSaves();
+        if(!SAVES) {
+            SAVES = await minecraft.getSaves();
+        }
     } catch(e) {
         vscode.window.showErrorMessage(`Beet: ${e.message}`);
         return;
     }
 
-    if(saves.length === 0) {
+    if(SAVES.length === 0) {
         vscode.window.showErrorMessage("Beet: Minecraft saves folder doesn't contain any worlds");
         return;
     }
 
-    let selectedWorld = await utils.pickFile(saves, saves.map((s) => path.basename(s.fsPath)), "Pick world to link");
+    const items = await Promise.all(SAVES.map(async (s) => ({label: path.basename(s.uri.fsPath), description: (await s.getVersion()).name})));
+    const selectedWorld = await utils.pickFile(SAVES.map(s => s.uri), items, "Pick world to link");
     if(!selectedWorld) {
         return;
     }
