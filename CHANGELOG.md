@@ -1,5 +1,12 @@
 Changelog
 
+# [0.8.0](https://github.com/mcbeet/vscode-beet/compare/v0.7.1...v0.8.0) (2021-04-13)
+
+
+### Features
+
+* LinkWorld command shows world version ([2376f62](https://github.com/mcbeet/vscode-beet/commit/2376f62ea8f153bf5a8620538c67e84cb3362d49))
+
 ## [0.7.1](https://github.com/mcbeet/vscode-beet/compare/v0.7.0...v0.7.1) (2021-04-08)
 
 
