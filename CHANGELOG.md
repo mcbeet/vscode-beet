@@ -1,5 +1,12 @@
 Changelog
 
+# [0.9.0](https://github.com/mcbeet/vscode-beet/compare/v0.8.0...v0.9.0) (2021-04-13)
+
+
+### Features
+
+* Added abbility to choose files with open dialog ([398b412](https://github.com/mcbeet/vscode-beet/commit/398b4121b138333f7b754298f4ff94e665da90b1))
+
 # [0.8.0](https://github.com/mcbeet/vscode-beet/compare/v0.7.1...v0.8.0) (2021-04-13)
 
 
