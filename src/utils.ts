@@ -1,6 +1,7 @@
 import * as vscode from 'vscode';
 import * as fs from 'fs';
 import * as util from 'util';
+import * as path from 'path';
 
 export async function isDirectory(path: string) {
     try {
@@ -19,19 +20,36 @@ export async function listDir(path: string) {
     }
 }
 
-export async function pickFile<T extends vscode.QuickPickItem>(files: vscode.Uri[], items: T[], placeHolder: string): Promise<vscode.Uri | undefined> {
+export async function pickFile(placeHolder: string, files: vscode.Uri[], descriptions?: string[], openDialogOptions?: vscode.OpenDialogOptions): Promise<vscode.Uri | undefined> {
     if (files.length === 0) {
         return undefined;
     } else if(files.length === 1) {
         return files[0];
     }
 
-    let options: { [key: string]: (vscode.Uri) } = {};
-    files.forEach((f, i) => {
-        options[items[i].label] = f;
-    });
+    let items: vscode.QuickPickItem[] = [
+        {
+            label: "Select path ...",
+            detail: "Select path with open dialog"
+        }
+    ];
 
-    return vscode.window.showQuickPick(items, { placeHolder, matchOnDescription: true }).then((selection) => {
-        return selection ? options[selection.label] : undefined;
+    items = items.concat(<vscode.QuickPickItem[]> files.map((file, i) => ({
+        label: path.basename(file.fsPath),
+        detail: file.fsPath,
+        description: descriptions? descriptions[i] : undefined
+    })));
+
+    const selection = await vscode.window.showQuickPick(items, { placeHolder, matchOnDescription: true});
+
+    if(selection?.detail === "Select path with open dialog") {
+        const selectedFiles = await vscode.window.showOpenDialog(openDialogOptions);
+        return selectedFiles ? selectedFiles[0] : undefined;
+    }
+
+    const options: { [key: string]: (vscode.Uri) } = {};
+    files.forEach((f, i) => {
+        options[files[i].fsPath] = f;
     });
+    return selection?.detail ? options[selection.detail] : undefined;
 }

@@ -3,7 +3,6 @@ import * as beet from './beet';
 import * as config from './config';
 import * as minecraft from './minecraft';
 import * as utils from './utils';
-import * as path from 'path';
 
 let SAVES: minecraft.Save[];
 
@@ -63,7 +62,7 @@ async function build() {
         case 1:
             configFile = configFiles[0];
         default:
-            let selection = await utils.pickFile(configFiles, configFiles.map((f) => ({label: vscode.workspace.asRelativePath(f)})), "Pick beet config file");
+            let selection = await utils.pickFile("Pick beet config file", configFiles);
             if(!selection) {
                 return;
             }
@@ -88,8 +87,8 @@ async function linkWorld() {
         return;
     }
 
-    const items = await Promise.all(SAVES.map(async (s) => ({label: path.basename(s.uri.fsPath), description: (await s.getVersion()).name})));
-    const selectedWorld = await utils.pickFile(SAVES.map(s => s.uri), items, "Pick world to link");
+    const descriptions = await Promise.all(SAVES.map(async (s) => (await s.getVersion()).name));
+    const selectedWorld = await utils.pickFile("Pick world to link", SAVES.map(s => s.uri), descriptions, {canSelectFiles: false, canSelectFolders: true});
     if(!selectedWorld) {
         return;
     }
