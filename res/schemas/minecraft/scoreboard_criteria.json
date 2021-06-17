@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "string",
+  "anyOf": [
+    {
+      "description": "Special criteria",
+      "enum": [
+        "air",
+        "armor",
+        "deathCount",
+        "food",
+        "health",
+        "level",
+        "playerKillCount",
+        "trigger",
+        "totalKillCount",
+        "xp",
+        "dummy"
+      ]
+    },
+    {
+      "description": "Player killed member of team",
+      "enum": [
+        "teamkill.aqua",
+        "teamkill.black",
+        "teamkill.blue",
+        "teamkill.dark_aqua",
+        "teamkill.dark_gray",
+        "teamkill.dark_green",
+        "teamkill.dark_purple",
+        "teamkill.dark_red",
+        "teamkill.gold",
+        "teamkill.gray",
+        "teamkill.green",
+        "teamkill.light_purple",
+        "teamkill.red",
+        "teamkill.white",
+        "teamkill.yellow"
+      ]
+    },
+    {
+      "description": "Player was killed by member of team",
+      "enum": [
+        "killedByTeam.aqua",
+        "killedByTeam.black",
+        "killedByTeam.blue",
+        "killedByTeam.dark_aqua",
+        "killedByTeam.dark_gray",
+        "killedByTeam.dark_green",
+        "killedByTeam.dark_purple",
+        "killedByTeam.dark_red",
+        "killedByTeam.gold",
+        "killedByTeam.gray",
+        "killedByTeam.green",
+        "killedByTeam.light_purple",
+        "killedByTeam.red",
+        "killedByTeam.white",
+        "killedByTeam.yellow"
+      ]
+    },
+	{
+		"description": "Unknown criteria",
+		"type": "string"
+	}
+  ]
+}

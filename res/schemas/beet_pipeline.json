@@ -78,34 +78,81 @@
       "items": {
         "anyOf": [
           {
+            "const": "beet.contrib.babelbox",
+            "description": "Loads translations from csv files (minimal built-in implementation)"
+          },
+          {
+            "const": "beet.contrib.dundervar",
+            "description": "Jinja extension for turning '__foo__' into '{{ foo }}'"
+          },
+          {
+            "const": "beet.contrib.format_json",
+            "description": "Format json files"
+          },
+          {
             "const": "beet.contrib.function_header",
-            "description": "Plugin that adds a header to functions automatically"
+            "description": "Automatically adds a header to functions"
+          },
+          {
+            "const": "beet.contrib.hangman",
+            "description": "Indentation-based syntactic extensions for functions"
+          },
+          {
+            "const": "beet.contrib.inline_function",
+            "description": "Jinja extension for declaring functions inline"
+          },
+          {
+            "const": "beet.contrib.inline_function_tag",
+            "description": "Jinja extension for declaring function tags inline"
           },
           {
             "const": "beet.contrib.lantern_load",
-            "description": "Plugin that implements Lantern Load runtime dependencies"
+            "description": "Adds Lantern Load runtime dependencies"
+          },
+          {
+            "const": "beet.contrib.minify_function",
+            "description": "Minifies function files"
+          },
+          {
+            "const": "beet.contrib.minify_json",
+            "description": "Minifies json files"
+          },
+          {
+            "const": "beet.contrib.relative_function_path",
+            "description": "Resolves relative function paths within a namespace"
           },
           {
             "const": "beet.contrib.render",
-            "description": "Plugin that invokes the built-in template renderer"
+            "description": "Invokes the built-in template renderer"
           },
           {
             "const": "beet.contrib.sandstone",
-            "description": "Plugin that builds a sandstone project"
+            "description": "Builds a sandstone project"
           },
           {
-            "const": "beet.contrib.babelbox",
-            "description": "Plugin that loads translations from csv files. Uses a minimal custom implementation"
+            "const": "beet.contrib.scoreboard",
+            "description": "Adds generated scoreboards to the data pack"
+          },
+          {
+            "const": "beet.contrib.template_context",
+            "description": "Exposes the beet context in templates"
+          },
+          {
+            "const": "beet.contrib.yellow_shulker_box",
+            "description": "Includes the yellow shulker box loot table"
           },
           {
             "const": "babelbox.integration.beet",
-            "description": "Plugin that loads translations from csv files. Uses https://pypi.org/project/babelbox/"
+            "description": "Loads translations from csv files (Full-featured implementation, requires https://pypi.org/project/babelbox/)"
           },
           {
             "const": "mcanitexgen.integration.beet",
-            "description": "Plugin that generates .mcmeta files for animated textures"
+            "description": "Generates .mcmeta files for animated textures"
           },
-          { "type": "string" },
+          {
+            "type": "string",
+            "description": "Custom plugin"
+          },
           {
             "description": "Nested beet project configuration",
             "$ref": "#"
@@ -129,32 +176,50 @@
           "description": "Default prefix of generated files",
           "type": "string"
         },
+        "generate_scoreboard": {
+          "description": "Scoreboards objectives to generate",
+          "type": "object",
+          "patternProperties": {
+            ".*": {
+              "description": "Objective name and its criteria",
+              "$ref": "minecraft/scoreboard_criteria.json"
+            }
+          }
+        },
+        "babelbox": {
+          "description": "babelbox plugin settings",
+          "$ref": "plugins/babelbox.json"
+        },
+        "format_json": {
+          "description": "format_json plugin settings",
+          "$ref": "contrib/format_json.json"
+        },
         "function_header": {
-          "description": "Config for beet.contrib.function_header plugin",
+          "description": "function_header plugin settings",
           "$ref": "contrib/function_header.json"
         },
+        "hangman": {
+          "description": "hangman plugin settings",
+          "$ref": "contrib/hangman.json"
+        },
         "lantern_load": {
-          "description": "Config for beet.lantern_load plugin",
+          "description": "lantern_load plugin settings",
           "$ref": "contrib/lantern_load.json"
         },
         "render": {
-          "description": "Config for beet.contrib.render plugin",
+          "description": "render plugin settings",
           "$ref": "contrib/render.json"
         },
         "sandstone": {
-          "description": "Config for beet.contrib.sandstone plugin",
+          "description": "sandstone plugin settings",
           "$ref": "contrib/sandstone.json"
         },
-        "babelbox-contrib": {
-          "description": "Config for beet.contrib.babelbox plugin",
-          "$ref": "contrib/babelbox.json"
-        },
-        "babelbox": {
-          "description": "Config for babelbox.integration.beet plugin",
-          "$ref": "plugins/babelbox.json"
+        "scoreboard": {
+          "description": "scoreboard plugin settings",
+          "$ref": "contrib/scoreboard.json"
         },
         "mcanitexgen": {
-          "description": "Mcanitexgen plugin configuration",
+          "description": "mcanitexgen plugin settings",
           "$ref": "plugins/mcanitexgen.json"
         }
       }

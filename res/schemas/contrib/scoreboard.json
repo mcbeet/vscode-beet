@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "function": {
+      "description": "Name of the generated function that creates the scoreboard objectives",
+      "type": "string"
+    },
+    "tags": {
+      "description": "Function tags of the generated function",
+      "type": "array",
+      "items": {
+        "description": "Function tag",
+        "type": "string",
+        "pattern": "^.+:.+"
+      }
+    }
+  }
+}

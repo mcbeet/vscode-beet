@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "match": {
+      "description": "Apply on selected functions",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}
