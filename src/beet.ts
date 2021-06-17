@@ -30,5 +30,7 @@ export async function link(pythonPath: string, target: string) {
 }
 
 export async function getConfigFiles() {
-    return vscode.workspace.findFiles("**/beet*.json");
+    let configFiles = await vscode.workspace.findFiles("**/beet*.{json,yml,yaml}");
+    configFiles = configFiles.concat(await vscode.workspace.findFiles("**/pyproject.toml"));
+    return configFiles;
 }
