@@ -15,7 +15,8 @@
     },
     "dialect": {
       "description": "Use a specific csv dialect instead of relying on sniffing",
-      "type": "string", "enum": ["excel", "excel-tab", "unix"]
+      "type": "string",
+      "enum": ["excel", "excel-tab", "unix"]
     }
   }
 }

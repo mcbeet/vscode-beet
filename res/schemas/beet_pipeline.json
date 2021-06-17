@@ -1,205 +1,205 @@
 {
-    "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "description": "Beet project config",
-    "type": "object",
-    "properties": {
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "description": "Beet project config",
+  "type": "object",
+  "properties": {
+    "name": {
+      "description": "Project name",
+      "type": "string"
+    },
+    "description": {
+      "description": "Project description. Included in pack.mcmeta",
+      "type": "string"
+    },
+    "author": {
+      "description": "Project author. Included in pack.mcmeta",
+      "type": "string"
+    },
+    "version": {
+      "description": "Project version. Included in pack.mcmeta",
+      "type": "string"
+    },
+
+    "directory": {
+      "description": "Root directory of the project",
+      "type": "string"
+    },
+    "extend": {
+      "description": "List of project config files to inherit from",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "output": {
+      "description": "Output directory",
+      "directory": "Generated files will be put here",
+      "type": "string"
+    },
+    "ignore": {
+      "description": "List of paths whose modification should be ignored by the watch command",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "whitelist": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "require": {
+      "description": "List of plugins running before the bootstrap plugin",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "templates": {
+      "description": "List of directories containing rendering templates",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "data_pack": {
+      "description": "Datapack config",
+      "$ref": "#/definitions/pack_config"
+    },
+    "resource_pack": {
+      "description": "Resourcepack config",
+      "$ref": "#/definitions/pack_config"
+    },
+    "pipeline": {
+      "description": "The plugin pipeline",
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "anyOf": [
+          {
+            "const": "beet.contrib.function_header",
+            "description": "Plugin that adds a header to functions automatically"
+          },
+          {
+            "const": "beet.contrib.lantern_load",
+            "description": "Plugin that implements Lantern Load runtime dependencies"
+          },
+          {
+            "const": "beet.contrib.render",
+            "description": "Plugin that invokes the built-in template renderer"
+          },
+          {
+            "const": "beet.contrib.sandstone",
+            "description": "Plugin that builds a sandstone project"
+          },
+          {
+            "const": "beet.contrib.babelbox",
+            "description": "Plugin that loads translations from csv files. Uses a minimal custom implementation"
+          },
+          {
+            "const": "babelbox.integration.beet",
+            "description": "Plugin that loads translations from csv files. Uses https://pypi.org/project/babelbox/"
+          },
+          {
+            "const": "mcanitexgen.integration.beet",
+            "description": "Plugin that generates .mcmeta files for animated textures"
+          },
+          { "type": "string" },
+          {
+            "description": "Nested beet project configuration",
+            "$ref": "#"
+          }
+        ]
+      }
+    },
+    "meta": {
+      "description": "Storage for during the build process. Also contains plugin config",
+      "type": "object",
+      "properties": {
+        "generate_format": {
+          "description": "Default location of generated files",
+          "type": "string"
+        },
+        "generate_namespace": {
+          "description": "Default namespace of generated files",
+          "type": "string"
+        },
+        "generate_prefix": {
+          "description": "Default prefix of generated files",
+          "type": "string"
+        },
+        "function_header": {
+          "description": "Config for beet.contrib.function_header plugin",
+          "$ref": "contrib/function_header.json"
+        },
+        "lantern_load": {
+          "description": "Config for beet.lantern_load plugin",
+          "$ref": "contrib/lantern_load.json"
+        },
+        "render": {
+          "description": "Config for beet.contrib.render plugin",
+          "$ref": "contrib/render.json"
+        },
+        "sandstone": {
+          "description": "Config for beet.contrib.sandstone plugin",
+          "$ref": "contrib/sandstone.json"
+        },
+        "babelbox-contrib": {
+          "description": "Config for beet.contrib.babelbox plugin",
+          "$ref": "contrib/babelbox.json"
+        },
+        "babelbox": {
+          "description": "Config for babelbox.integration.beet plugin",
+          "$ref": "plugins/babelbox.json"
+        },
+        "mcanitexgen": {
+          "description": "Mcanitexgen plugin configuration",
+          "$ref": "plugins/mcanitexgen.json"
+        }
+      }
+    }
+  },
+  "definitions": {
+    "pack_config": {
+      "type": "object",
+      "properties": {
         "name": {
-            "description": "Project name",
-            "type": "string"
+          "description": "Name of the pack. Overwrites project name",
+          "type": "string"
         },
         "description": {
-            "description": "Project description. Included in pack.mcmeta",
+          "description": "Description of the pack. Overwrites project description",
+          "type": "string"
+        },
+        "pack_format": {
+          "description": "Pack version",
+          "default": 6,
+          "type": "integer",
+          "minimum": 0
+        },
+        "zipped": {
+          "description": "Wether the pack should be zipped",
+          "type": "boolean"
+        },
+        "load": {
+          "description": "Load and merge existing packs",
+          "type": "array",
+          "items": {
             "type": "string"
+          }
         },
-        "author": {
-            "description": "Project author. Included in pack.mcmeta",
-            "type": "string"
-        },
-        "version": {
-            "description": "Project version. Included in pack.mcmeta",
-            "type": "string"
-        },
-
-        "directory": {
-            "description": "Root directory of the project",
-            "type": "string"
-        },
-        "extend": {
-            "description": "List of project config files to inherit from",
+        "render": {
+          "description": "Groups of files that will be processed with templates",
+          "type": "object",
+          "additionalProperties": {
             "type": "array",
             "items": {
-                "type": "string"
+              "type": "string"
             }
-        },
-        "output": {
-            "description": "Output directory",
-            "directory": "Generated files will be put here",
-            "type": "string"
-        },
-        "ignore": {
-            "description": "List of paths whose modification should be ignored by the watch command",
-            "type": "array",
-            "items": {
-                "type": "string"
-            }
-        },
-        "whitelist": {
-            "type": "array",
-            "items": {
-                "type": "string"
-            }
-        },
-        "require": {
-            "description": "List of plugins running before the bootstrap plugin",
-            "type": "array",
-            "items": {
-                "type": "string"
-            }
-        },
-        "templates": {
-            "description": "List of directories containing rendering templates",
-            "type": "array",
-            "items": {
-                "type": "string"
-            }
-        },
-        "data_pack": {
-            "description": "Datapack config",
-            "$ref": "#/definitions/pack_config"
-        },
-        "resource_pack": {
-            "description": "Resourcepack config",
-            "$ref": "#/definitions/pack_config"
-        },
-        "pipeline": {
-            "description": "The plugin pipeline",
-            "type": "array",
-            "uniqueItems": true,
-            "items": {
-                "anyOf": [
-                    {
-                        "const": "beet.contrib.function_header",
-                        "description": "Plugin that adds a header to functions automatically"
-                    },
-                    {
-                        "const": "beet.contrib.lantern_load",
-                        "description": "Plugin that implements Lantern Load runtime dependencies"
-                    },
-                    {
-                        "const": "beet.contrib.render",
-                        "description": "Plugin that invokes the built-in template renderer"
-                    },
-                    {
-                        "const": "beet.contrib.sandstone",
-                        "description": "Plugin that builds a sandstone project"
-                    },
-                    {
-                        "const": "beet.contrib.babelbox",
-                        "description": "Plugin that loads translations from csv files. Uses a minimal custom implementation"
-                    },
-                    {
-                        "const": "babelbox.integration.beet",
-                        "description": "Plugin that loads translations from csv files. Uses https://pypi.org/project/babelbox/"
-                    },
-                    {
-                        "const": "mcanitexgen.integration.beet",
-                        "description": "Plugin that generates .mcmeta files for animated textures"
-                    },
-                    {"type": "string"},
-                    {
-                        "description": "Nested beet project configuration",
-                        "$ref": "#"
-                    }
-                ]
-            }
-        },
-        "meta": {
-            "description": "Storage for during the build process. Also contains plugin config",
-            "type": "object",
-            "properties": {
-                "generate_format": {
-                    "description": "Default location of generated files",
-                    "type": "string"
-                },
-                "generate_namespace": {
-                    "description": "Default namespace of generated files",
-                    "type": "string"
-                },
-                "generate_prefix": {
-                    "description": "Default prefix of generated files",
-                    "type": "string"
-                },
-                "function_header": {
-                    "description": "Config for beet.contrib.function_header plugin",
-                    "$ref": "contrib/function_header.json"
-                },
-                "lantern_load": {
-                    "description": "Config for beet.lantern_load plugin",
-                    "$ref": "contrib/lantern_load.json"
-                },
-                "render": {
-                    "description": "Config for beet.contrib.render plugin",
-                    "$ref": "contrib/render.json"
-                },
-                "sandstone": {
-                    "description": "Config for beet.contrib.sandstone plugin",
-                    "$ref": "contrib/sandstone.json"
-                },
-                "babelbox-contrib": {
-                    "description": "Config for beet.contrib.babelbox plugin",
-                    "$ref": "contrib/babelbox.json"
-                },
-                "babelbox": {
-                    "description": "Config for babelbox.integration.beet plugin",
-                    "$ref": "plugins/babelbox.json"
-                },
-                "mcanitexgen": {
-                    "description": "Mcanitexgen plugin configuration",
-                    "$ref": "plugins/mcanitexgen.json"
-                }
-            }
+          }
         }
-    },
-    "definitions": {
-        "pack_config": {
-            "type": "object",
-            "properties": {
-                "name": {
-                    "description": "Name of the pack. Overwrites project name",
-                    "type": "string"
-                },
-                "description": {
-                    "description": "Description of the pack. Overwrites project description",
-                    "type": "string"
-                },
-                "pack_format": {
-                    "description": "Pack version",
-                    "default": 6,
-                    "type": "integer",
-                    "minimum": 0
-                },
-                "zipped": {
-                    "description": "Wether the pack should be zipped",
-                    "type": "boolean"
-                },
-                "load": {
-                    "description": "Load and merge existing packs",
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    }
-                },
-                "render": {
-                    "description": "Groups of files that will be processed with templates",
-                    "type": "object",
-                    "additionalProperties": {
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        }
-                    }
-                }
-            }
-        }
+      }
     }
+  }
 }
