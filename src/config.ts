@@ -64,3 +64,12 @@ async function locateMinecraft() {
 
     return mcPath;
 }
+
+export function getSelectedConfigFile() {
+    const config: string | undefined = vscode.workspace.getConfiguration("beet").get("selectedConfigFile");
+    return config ? vscode.Uri.file(config) : undefined;
+}
+
+export function setSelectedConfigFile(uri: vscode.Uri) {
+    vscode.workspace.getConfiguration("beet").update("selectedConfigFile", uri.fsPath);
+}

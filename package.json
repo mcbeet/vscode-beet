@@ -23,7 +23,8 @@
     "onCommand:vscode-beet.clear-cache",
     "onCommand:vscode-beet.link-world",
     "onCommand:vscode-beet.clear-link",
-    "onCommand:vscode-beet.watch"
+    "onCommand:vscode-beet.watch",
+    "onCommand:vscode-beet.select-config-file"
   ],
   "categories": [
     "Linters"
@@ -65,6 +66,10 @@
       {
         "command": "vscode-beet.watch",
         "title": "Beet: Watch"
+      },
+      {
+        "command": "vscode-beet.select-config-file",
+        "title": "Beet: Select configuration file"
       }
     ],
     "taskDefinitions": [
@@ -93,6 +98,10 @@
           "type": "string",
           "scope": "resource",
           "markdownDescription": "Path to minecraft. Defaults to `%AppData%\\.minecraft` on windows, `~/.minecraft` on linux and `~/Application Support/minecraft` on darwin"
+        },
+        "beet.selectedConfigFile": {
+          "type": "string",
+          "scope": "resource"
         }
       }
     }

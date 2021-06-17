@@ -27,22 +27,21 @@ export async function pickFile(placeHolder: string, files: vscode.Uri[], descrip
         return files[0];
     }
 
-    let items: vscode.QuickPickItem[] = [
+    const items: vscode.QuickPickItem[] = [
         {
-            label: "Select path ...",
-            detail: "Select path with open dialog"
-        }
+            label: "Enter path ...",
+            detail: "Enter path or find file"
+        },
+        ...<vscode.QuickPickItem[]> files.map((file, i) => ({
+            label: path.basename(file.fsPath),
+            detail: file.fsPath,
+            description: descriptions? descriptions[i] : undefined
+        }))
     ];
-
-    items = items.concat(<vscode.QuickPickItem[]> files.map((file, i) => ({
-        label: path.basename(file.fsPath),
-        detail: file.fsPath,
-        description: descriptions? descriptions[i] : undefined
-    })));
 
     const selection = await vscode.window.showQuickPick(items, { placeHolder, matchOnDescription: true});
 
-    if(selection?.detail === "Select path with open dialog") {
+    if(selection?.detail === "Enter path or find file") {
         const selectedFiles = await vscode.window.showOpenDialog(openDialogOptions);
         return selectedFiles ? selectedFiles[0] : undefined;
     }
@@ -52,4 +51,11 @@ export async function pickFile(placeHolder: string, files: vscode.Uri[], descrip
         options[files[i].fsPath] = f;
     });
     return selection?.detail ? options[selection.detail] : undefined;
+}
+
+export function distanceToWorkspaceRoot(uri: vscode.Uri) {
+    const root = vscode.workspace.getWorkspaceFolder(uri);
+    if(root === undefined) return Number.MAX_SAFE_INTEGER;
+
+    return path.posix.relative(root.uri.path, uri.path).split(path.posix.sep).length;
 }

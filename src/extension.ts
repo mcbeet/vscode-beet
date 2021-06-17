@@ -38,7 +38,8 @@ function registerCommands(ctx: vscode.ExtensionContext) {
         vscode.commands.registerCommand("vscode-beet.clear-cache", () => vscode.tasks.executeTask(clearCacheTask)),
         vscode.commands.registerCommand("vscode-beet.link-world", () => linkWorld()),
         vscode.commands.registerCommand("vscode-beet.clear-link", () => vscode.tasks.executeTask(clearLinkTask)),
-        vscode.commands.registerCommand("vscode-beet.watch", () => vscode.tasks.executeTask(watchTask))
+        vscode.commands.registerCommand("vscode-beet.watch", () => vscode.tasks.executeTask(watchTask)),
+        vscode.commands.registerCommand("vscode-beet.select-config-file", () => selectConfigFile())
     );
 }
 
@@ -52,24 +53,14 @@ function updateBeetTasks() {
 }
 
 async function build() {
-    let configFiles = await beet.getConfigFiles();
+    let selectedConfigFile = config.getSelectedConfigFile();
 
-    let configFile: vscode.Uri;
-    switch(configFiles.length) {
-        case 0:
-            vscode.window.showErrorMessage("Beet: No config files found");
-            return;
-        case 1:
-            configFile = configFiles[0];
-        default:
-            let selection = await utils.pickFile("Pick beet config file", configFiles);
-            if(!selection) {
-                return;
-            }
-            configFile = selection;
+    if(!selectedConfigFile) {
+        selectedConfigFile = await selectConfigFile();
+        if(!selectedConfigFile) return;
     }
 
-    beet.build(config.getPythonPath(), configFile.fsPath);
+    beet.build(config.getPythonPath(), selectedConfigFile.fsPath);
 }
 
 async function linkWorld() {
@@ -98,4 +89,20 @@ async function linkWorld() {
     } catch(e) {
 
     }
+}
+
+async function selectConfigFile() {
+    let configFiles = await beet.getConfigFiles();
+    configFiles = configFiles.sort((a, b) => {
+        const pathDiff = utils.distanceToWorkspaceRoot(a) - utils.distanceToWorkspaceRoot(b);
+        return pathDiff !== 0 ? pathDiff : a.path.localeCompare(b.path);
+    });
+
+    const selectedConfigFile = await utils.pickFile("Pick beet config file", configFiles);
+    if(!selectedConfigFile) {
+        return;
+    }
+
+    config.setSelectedConfigFile(selectedConfigFile);
+    return selectedConfigFile;
 }
