@@ -1,5 +1,14 @@
 Changelog
 
+# [0.10.0](https://github.com/mcbeet/vscode-beet/compare/v0.9.0...v0.10.0) (2021-06-17)
+
+
+### Features
+
+* Added command to select config file ([1962e31](https://github.com/mcbeet/vscode-beet/commit/1962e315bc674692109a9795b9709b3d720101a5))
+* Added json schemas for new contrib plugins ([198e6eb](https://github.com/mcbeet/vscode-beet/commit/198e6eb6f52ef1c5a728634146d3580be8abccc2))
+* Support for toml & yaml build files ([bbc71a8](https://github.com/mcbeet/vscode-beet/commit/bbc71a88ae7ad08c5b7ce568c77ec9493211cdcc))
+
 # [0.9.0](https://github.com/mcbeet/vscode-beet/compare/v0.8.0...v0.9.0) (2021-04-13)
 
 
