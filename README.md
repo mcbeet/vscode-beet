@@ -16,7 +16,12 @@ Adds VS Code support for [`beet`](https://github.com/mcbeet/beet) projects.<br>
 
 # Features
 ## Completion
-Adds linting and completions for `beet*.json` config files:
+Adds linting and completions for beet config files:
+- `beet*.json`
+- `beet*.yaml`
+- `beet*.yml`
+- `beet*.toml`
+- `pyproject.toml`
 
 ![](https://raw.githubusercontent.com/mcbeet/vscode-beet/main/images/demos/project_completion.gif)
 
