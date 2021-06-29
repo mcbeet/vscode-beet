@@ -42,6 +42,16 @@
         "url": "./res/schemas/beet_pipeline.json"
       }
     ],
+    "yamlValidation": [
+      {
+        "fileMatch": "beet*.yml",
+        "url": "./res/schemas/beet_pipeline.json"
+      },
+      {
+        "fileMatch": "beet*.yaml",
+        "url": "./res/schemas/beet_pipeline.json"
+      }
+    ],
     "commands": [
       {
         "command": "vscode-beet.build",
