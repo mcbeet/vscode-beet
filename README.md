@@ -7,7 +7,7 @@ Adds VS Code support for [`beet`](https://github.com/mcbeet/beet) projects.<br>
 [`beet`](https://github.com/mcbeet/beet) is a development kit for creating Minecraft resource- and datapacks. It serves as a platform for a cooperative tooling ecosystem and its flexible composition model allows for customizable and user-friendly workflows.
 
 - [Features](#Features)
-    - [Completion](#Completion)
+    - [Linting and Completions](#Linting-and-Completions)
     - [Beet commands](#Beet-commands)
         - [Link world](#Link-world)
         - [Build](#Build)
@@ -15,15 +15,17 @@ Adds VS Code support for [`beet`](https://github.com/mcbeet/beet) projects.<br>
 - [Changelog](https://github.com/mcbeet/vscode-beet/blob/main/CHANGELOG.md)
 
 # Features
-## Completion
-Adds linting and completions for beet config files:
-- `beet*.json`
-- `beet*.yaml`
-- `beet*.yml`
-- `beet*.toml`
-- `pyproject.toml`
+## Linting and Completions
+### Json
+Linting/Completions for Json config files matching `beet*.json` work automatically.
 
 ![](https://raw.githubusercontent.com/mcbeet/vscode-beet/main/images/demos/project_completion.gif)
+
+### Yaml
+Linting/Completions for Json config files matching `beet*.yaml` or `beet*.yml` require the [Red hat YAML extension](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml).
+
+### Toml
+Linting/Completions for Toml config files is not yet supported
 
 ## Beet commands
 ### Link world
