@@ -1,5 +1,12 @@
 Changelog
 
+# [0.11.0](https://github.com/mcbeet/vscode-beet/compare/v0.10.0...v0.11.0) (2021-06-29)
+
+
+### Features
+
+* Validation for Yaml config files ([154ab06](https://github.com/mcbeet/vscode-beet/commit/154ab0676e8faf651705d25874ea8163e2887db9))
+
 # [0.10.0](https://github.com/mcbeet/vscode-beet/compare/v0.9.0...v0.10.0) (2021-06-17)
 
 
