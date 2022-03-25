@@ -244,7 +244,7 @@
           "minimum": 0
         },
         "zipped": {
-          "description": "Wether the pack should be zipped",
+          "description": "Whether the pack should be zipped",
           "type": "boolean"
         },
         "load": {
