@@ -1,5 +1,12 @@
 Changelog
 
+## [0.11.1](https://github.com/mcbeet/vscode-beet/compare/v0.11.0...v0.11.1) (2022-03-25)
+
+
+### Bug Fixes
+
+* typo in beet_pipeline.json ([#4](https://github.com/mcbeet/vscode-beet/issues/4)) ([934443f](https://github.com/mcbeet/vscode-beet/commit/934443f42a3f7944b7ef13aa6104a75ecdef96c5))
+
 # [0.11.0](https://github.com/mcbeet/vscode-beet/compare/v0.10.0...v0.11.0) (2021-06-29)
 
 
